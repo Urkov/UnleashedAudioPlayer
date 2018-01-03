@@ -1,5 +1,6 @@
 package org.openauto.unleashedaudioplayer;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
@@ -13,6 +14,8 @@ public class UnleashedAudioPlayerPhoneActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_main);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         webView = findViewById(R.id.webview_component);
         webViewHandler = new WebViewHandler(this, webView);

@@ -45,7 +45,10 @@ function createAlbumGrid(jsonAlbums){
     var obj = JSON.parse(jsonAlbums);
     $("#album-container").empty();
     $.each(obj, function(i,e){
-        $("#album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'><div class='artist-text-item'>"+e.artist+"</div><div class='album-text-item'>"+e.name+"</div><div><img class='album-img' src='"+e.art+"'></img></div></div>");
+        var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";
+        var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.name+"</span></div>";
+        var coverHTML = "<div><img class='album-img' src='"+e.art+"'></img></div>"
+        $("#album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
     $("#track-container").hide();
     $("#cover-container").hide();
