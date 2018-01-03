@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MediaStoreHandler {
@@ -98,6 +99,7 @@ public class MediaStoreHandler {
 
         cursor.close();
 
+        Collections.sort(list);
         return list;
     }
 
