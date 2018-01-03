@@ -13,15 +13,22 @@ I am not responsible for any damage caused by this application.
 
 - It can play music ;-)
 
-## How to use:
+## How to install:
 
 - Build and install APK 
 - Enable Developer settings in Android Auto
 - Enable 'Unknown sources' checkbox
 - Connect phone to AA Head Unit and select the OEM tab
 
+## How to user:
+
+- Select album in the main view
+- Select a track in the track view
+- To return to album view, tap on the art cover
+
 ![alt text](https://raw.githubusercontent.com/nerone-github/LocalSpeedcam/master/images/devsettings.png)
 
 ## Screenshots
 
-TODO
+![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua1.png)
+![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua2.png)
