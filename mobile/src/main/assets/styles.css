@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'AlegreyaSans-Regular';
+    src: url('file:///android_asset/fonts/AlegreyaSans-Regular.ttf');
+}
+body {
+    font-family: 'AlegreyaSans-Regular';
+    background: black;
+    color: white;
+    margin: 0;
+}
+.album-img {
+    height: 150px;
+    width: 150px;
+}
+.album-item {
+    width: 150px;
+    height: 190px;
+    margin: 5px;
+    padding: 2px;
+    border: 1px solid gray;
+    display: inline-block;
+}
+.artist-text-item {
+     white-space: nowrap;
+     overflow: hidden;
+}
+.album-text-item {
+     white-space: nowrap;
+     overflow: hidden;
+}
+#album-container {
+    text-align: center;
+}
+#track-container {
+    width: 48%;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#cover-container{
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
+    top: 5px;
+    text-align: center;
+}
+.favItem{
+    border: 1px solid black;
+    display: inline-block;
+}
+.track-item {
+    margin: 5px;
+    padding: 2px;
+    border: 1px solid gray;
+    display: block;
+    overflow: hidden;
+}
+.track-item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.track-item-selected {
+    color: black;
+    background: white;
+}
+#audio-player {
+    width: 50%;
+    position: fixed;
+    bottom: 0;
+    display: block;
+    right: 5px;
+}

@@ -1,0 +1,54 @@
+function b64EncodeUnicode(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+        return String.fromCharCode(parseInt(p1, 16))
+    }))
+}
+function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+}
+
+function goToAlbums(toast) {
+    Android.goToAlbums("XX");
+}
+
+function playTrack(element){
+    $(".track-item").removeClass("track-item-selected");
+    $(element).addClass("track-item-selected");
+    var file = $(element).data("file");
+    console.log(b64DecodeUnicode(file));
+    $("#audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
+    $("#audio-player")[0].load();
+    $("#audio-player")[0].play();
+}
+function createTrackGrid(jsonTracks){
+    var obj = JSON.parse(jsonTracks);
+    var coverArt = "";
+    $("#track-container").empty();
+    $.each(obj, function(i,e){
+        $("#track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
+        coverArt = e.coverArt;
+    });
+    $("#coverart-img")[0].src = coverArt;
+    $("#track-container").show();
+    $("#cover-container").show();
+    $("#audio-player").show();
+    $("#album-container").hide();
+}
+
+function selectTrack(toast) {
+    Android.selectTrack(toast);
+}
+
+function createAlbumGrid(jsonAlbums){
+    var obj = JSON.parse(jsonAlbums);
+    $("#album-container").empty();
+    $.each(obj, function(i,e){
+        $("#album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'><div class='artist-text-item'>"+e.artist+"</div><div class='album-text-item'>"+e.name+"</div><div><img class='album-img' src='"+e.art+"'></img></div></div>");
+    });
+    $("#track-container").hide();
+    $("#cover-container").hide();
+    $("#audio-player").hide();
+    $("#album-container").show();
+}
