@@ -36,6 +36,9 @@ function createTrackGrid(jsonTracks){
     $.each(obj, function(i,e){
         $("#track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
         coverArt = e.coverArt;
+        if(coverArt === undefined){
+            coverArt = "img/nocover.png";
+        }
     });
     $("#coverart-img")[0].src = coverArt;
     $("#track-container").show();
@@ -54,7 +57,11 @@ function createAlbumGrid(jsonAlbums){
     $.each(obj, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";
         var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.name+"</span></div>";
-        var coverHTML = "<div><img class='album-img' src='"+e.art+"'></img></div>"
+        var albumArtFile = e.art;
+        if(e.art === undefined){
+            albumArtFile = "img/nocover.png";
+        }
+        var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>"
         $("#album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
     $("#track-container").hide();

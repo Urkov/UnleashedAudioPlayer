@@ -1,7 +1,6 @@
 package org.openauto.unleashedaudioplayer
 
-
-internal class AlbumModel : Comparable<AlbumModel> {
+class AlbumModel : Comparable<AlbumModel> {
 
     override fun compareTo(other: AlbumModel): Int {
          return this.artist!!.compareTo(other.artist!!)
