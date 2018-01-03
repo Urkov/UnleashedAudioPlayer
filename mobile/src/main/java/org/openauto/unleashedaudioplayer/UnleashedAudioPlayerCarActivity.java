@@ -109,7 +109,9 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
     public void updateBrowserFragment(Fragment fragment) {
 
         final WebView wbb = (WebView)findViewById(R.id.webview_component);
-        webViewHandler = new WebViewHandler(this, wbb);
+        if(webViewHandler == null){
+            webViewHandler = new WebViewHandler(this, wbb);
+        }
 
     }
 
