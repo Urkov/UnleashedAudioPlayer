@@ -19,6 +19,7 @@ I am not responsible for any damage caused by this application.
 - Enable Developer settings in Android Auto
 - Enable 'Unknown sources' checkbox
 - Connect phone to AA Head Unit and select the OEM tab
+- App permissions must be granted manually
 
 ## How to user:
 
