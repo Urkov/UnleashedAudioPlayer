@@ -12,7 +12,14 @@ function b64DecodeUnicode(str) {
 function goToAlbums(toast) {
     Android.goToAlbums("XX");
 }
-
+function playNextTrack(){
+    var nextTrack = $(".track-item-selected").next();
+    if($(nextTrack).hasClass("track-item")){
+        playTrack(nextTrack);
+    } else {
+        playTrack($(".track-item").first());
+    }
+}
 function playTrack(element){
     $(".track-item").removeClass("track-item-selected");
     $(element).addClass("track-item-selected");
@@ -54,4 +61,15 @@ function createAlbumGrid(jsonAlbums){
     $("#cover-container").hide();
     $("#audio-player").hide();
     $("#album-container").show();
+}
+
+function initView(){
+    goToAlbums();
+
+    //bind event to detect when a track has finished playing
+    var audioPlayer = $("#audio-player")[0];
+    audioPlayer.addEventListener("ended", function(){
+          audioPlayer.currentTime = 0;
+          playNextTrack();
+     });
 }
