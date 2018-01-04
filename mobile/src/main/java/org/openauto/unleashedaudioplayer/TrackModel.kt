@@ -1,3 +1,11 @@
 package org.openauto.unleashedaudioplayer
 
-class TrackModel(internal var id: Long, internal var title: String, internal var artist: String, internal var data: String, internal var coverArt: String? = null)
+class TrackModel {
+
+    var id: Long = 0
+    var title: String? = null
+    var artist: String? = null
+    var data: String? = null
+    var coverArt: String? = null
+    var fileExt: String? = null
+}

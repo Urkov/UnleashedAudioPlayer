@@ -46,10 +46,6 @@ body {
     top: 5px;
     text-align: center;
 }
-.favItem{
-    border: 1px solid black;
-    display: inline-block;
-}
 .track-item {
     margin: 5px;
     padding: 2px;
@@ -65,6 +61,12 @@ body {
 .track-item-selected {
     color: black;
     background: white;
+}
+.file-type-box {
+    color: white;
+    display: block;
+    vertical-align: center;
+    position: relative;
 }
 #audio-player {
     width: 50%;

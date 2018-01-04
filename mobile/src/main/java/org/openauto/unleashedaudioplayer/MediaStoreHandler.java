@@ -37,11 +37,19 @@ public class MediaStoreHandler {
                 String thisTitle = mediaCursor.getString(titleColumn);
                 String thisArtist = mediaCursor.getString(artistColumn);
                 String thisData = mediaCursor.getString(audiodata);
+                String thisFileExt = getFileExt(thisData);
 
                 // Add the info to our array.
                 if(albumIdToQuery == thisalbumId)
                 {
-                    tracks.add(new TrackModel(thisId, thisTitle, thisArtist, thisData, albumToLoad.getArt()));
+                    TrackModel tm = new TrackModel();
+                    tm.setId(thisId);
+                    tm.setTitle(thisTitle);
+                    tm.setArtist(thisArtist);
+                    tm.setData(thisData);
+                    tm.setCoverArt(albumToLoad.getArt());
+                    tm.setFileExt(thisFileExt);
+                    tracks.add(tm);
                 }
             }
             while (mediaCursor.moveToNext());
@@ -101,6 +109,15 @@ public class MediaStoreHandler {
 
         Collections.sort(list);
         return list;
+    }
+
+    private static String getFileExt(String fileName){
+        String extension = "";
+        int i = fileName.lastIndexOf('.');
+        if (i > 0) {
+            extension = fileName.substring(i+1);
+        }
+        return extension;
     }
 
 }
