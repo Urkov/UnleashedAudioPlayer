@@ -33,10 +33,16 @@ body {
 }
 #track-container {
     width: 48%;
-    display: inline-block;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
+    float: left;
+}
+#track-container div:first-child {
+    margin-top: 0 !important;
+}
+#track-container div:last-child {
+    margin-bottom: 0 !important;
 }
 #cover-container{
     width: 48%;
@@ -63,10 +69,16 @@ body {
     background: white;
 }
 .file-type-box {
+    background: black;
     color: white;
-    display: block;
-    vertical-align: center;
+    border: 1px solid gray;
+    border-radius: 3px;
+    vertical-align: middle;
     position: relative;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 1px;
 }
 #audio-player {
     width: 50%;
