@@ -15,11 +15,11 @@ I am not responsible for any damage caused by this application.
 
 ## How to install:
 
-- Build and install APK 
+- Build and install APK (If you want to skip the build, [download APK here](https://github.com/nerone-github/UnleashedAudioPlayer/raw/master/apk/unleashedaudio.apk)).
 - Enable Developer settings in Android Auto
 - Enable 'Unknown sources' checkbox
 - Connect phone to AA Head Unit and select the OEM tab
-- App permissions must be granted manually
+- App permissions must be granted manually via the App menu of the phone, or by launching the phone Activity first
 
 ## How to user:
 
