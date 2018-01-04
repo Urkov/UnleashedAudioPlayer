@@ -89,3 +89,9 @@ body {
     right: 0;
     display: block;
 }
+audio::-webkit-media-controls-panel {
+    background: transparent;
+}
+audio::-webkit-media-controls-current-time-display, audio::-webkit-media-controls-time-remaining-display {
+    color: white;
+}
