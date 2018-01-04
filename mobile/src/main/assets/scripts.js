@@ -46,6 +46,11 @@ function createTrackGrid(jsonTracks){
     });
     $(".file-type-box").text(fileExt);
     $(".year-box").text(year);
+    if(year === undefined){
+        $(".year-box").hide();
+    } else {
+        $(".year-box").show();
+    }
     $("#coverart-img")[0].src = coverArt;
     $("#track-container").show();
     $("#cover-container").show();
