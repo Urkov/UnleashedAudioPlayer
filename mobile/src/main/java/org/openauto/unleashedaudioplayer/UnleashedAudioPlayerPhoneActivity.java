@@ -62,14 +62,18 @@ public class UnleashedAudioPlayerPhoneActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState )
     {
         super.onSaveInstanceState(outState);
-        webView.saveState(outState);
+        if(webView != null){
+            webView.saveState(outState);
+        }
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
         super.onRestoreInstanceState(savedInstanceState);
-        webView.restoreState(savedInstanceState);
+        if(webView != null) {
+            webView.restoreState(savedInstanceState);
+        }
     }
 
 
