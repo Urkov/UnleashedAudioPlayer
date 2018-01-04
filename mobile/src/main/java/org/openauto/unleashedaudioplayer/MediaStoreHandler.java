@@ -29,6 +29,7 @@ public class MediaStoreHandler {
             int artistColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
             int albumId = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID);
             int audiodata = mediaCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
+            int year = mediaCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR);
 
             // Store the title, id and artist name in Song Array list.
             do
@@ -39,6 +40,7 @@ public class MediaStoreHandler {
                 String thisArtist = mediaCursor.getString(artistColumn);
                 String thisData = mediaCursor.getString(audiodata);
                 String thisTrack = mediaCursor.getString(trackColumn);
+                String thisYear = mediaCursor.getString(year);
                 String thisFileExt = getFileExt(thisData);
 
                 // Add the info to our array.
@@ -50,6 +52,7 @@ public class MediaStoreHandler {
                     tm.setTitle(thisTitle);
                     tm.setArtist(thisArtist);
                     tm.setData(thisData);
+                    tm.setYear(thisYear);
                     tm.setCoverArt(albumToLoad.getArt());
                     tm.setFileExt(thisFileExt);
                     tracks.add(tm);
@@ -89,22 +92,11 @@ public class MediaStoreHandler {
             do {
 
                 AlbumModel albumData = new AlbumModel();
-
-                albumData
-                        .setId(cursor.getLong(cursor.getColumnIndex(_id)));
-
-                albumData.setName(cursor.getString(cursor
-                        .getColumnIndex(album_name)));
-
-                albumData.setArtist(cursor.getString(cursor
-                        .getColumnIndex(artist)));
-
-                albumData.setArt(cursor.getString(cursor
-                        .getColumnIndex(albumart)));
-
-                albumData.setTracks(cursor.getString(cursor
-                        .getColumnIndex(tracks)));
-
+                albumData.setId(cursor.getLong(cursor.getColumnIndex(_id)));
+                albumData.setName(cursor.getString(cursor.getColumnIndex(album_name)));
+                albumData.setArtist(cursor.getString(cursor.getColumnIndex(artist)));
+                albumData.setArt(cursor.getString(cursor.getColumnIndex(albumart)));
+                albumData.setTracks(cursor.getString(cursor.getColumnIndex(tracks)));
                 list.add(albumData);
 
             } while (cursor.moveToNext());

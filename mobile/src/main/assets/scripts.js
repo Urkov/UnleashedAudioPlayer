@@ -33,6 +33,7 @@ function createTrackGrid(jsonTracks){
     var obj = JSON.parse(jsonTracks);
     var coverArt = "";
     var fileExt = "";
+    var year = "";
     $("#track-container").empty();
     $.each(obj, function(i,e){
         $("#track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
@@ -41,8 +42,10 @@ function createTrackGrid(jsonTracks){
             coverArt = "img/nocover.png";
         }
         fileExt = e.fileExt;
+        year = e.year;
     });
     $(".file-type-box").text(fileExt);
+    $(".year-box").text(year);
     $("#coverart-img")[0].src = coverArt;
     $("#track-container").show();
     $("#cover-container").show();

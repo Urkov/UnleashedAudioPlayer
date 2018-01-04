@@ -18,6 +18,7 @@ class TrackModel : Comparable<TrackModel> {
     var track: String? = null
     var title: String? = null
     var artist: String? = null
+    var year: String? = null
     var data: String? = null
     var coverArt: String? = null
     var fileExt: String? = null
