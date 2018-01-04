@@ -25,6 +25,7 @@ public class MediaStoreHandler {
             //get Columns
             int titleColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
             int idColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media._ID);
+            int trackColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.TRACK);
             int artistColumn = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
             int albumId = mediaCursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID);
             int audiodata = mediaCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
@@ -37,12 +38,14 @@ public class MediaStoreHandler {
                 String thisTitle = mediaCursor.getString(titleColumn);
                 String thisArtist = mediaCursor.getString(artistColumn);
                 String thisData = mediaCursor.getString(audiodata);
+                String thisTrack = mediaCursor.getString(trackColumn);
                 String thisFileExt = getFileExt(thisData);
 
                 // Add the info to our array.
                 if(albumIdToQuery == thisalbumId)
                 {
                     TrackModel tm = new TrackModel();
+                    tm.setTrack(thisTrack);
                     tm.setId(thisId);
                     tm.setTitle(thisTitle);
                     tm.setArtist(thisArtist);
@@ -57,6 +60,8 @@ public class MediaStoreHandler {
             // For best practices, close the cursor after use.
             mediaCursor.close();
         }
+
+        Collections.sort(tracks);
         return tracks;
     }
 
