@@ -9,16 +9,15 @@ body {
     margin: 0;
 }
 .album-img {
-    height: 150px;
+    display: block;
+    height: auto;
     width: 150px;
 }
 .album-item {
     width: 150px;
-    height: 190px;
     margin: 5px;
-    padding: 2px;
-    border: 1px solid gray;
     display: inline-block;
+    border: 1px solid gray;
 }
 .artist-text-item {
      white-space: nowrap;
@@ -45,12 +44,15 @@ body {
     margin-bottom: 0 !important;
 }
 #cover-container{
-    width: 48%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
     position: fixed;
-    top: 5px;
     text-align: center;
+}
+#coverart-img {
+    width: 80%;
+    height: 80%;
 }
 .track-item {
     margin: 5px;
