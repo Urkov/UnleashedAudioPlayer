@@ -52,7 +52,9 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks,
                 false);
 
-
+        //Init a media session to handle control actions via steering wheel or headset
+        MediaSessionHandler mediaSessionHandler = new MediaSessionHandler();
+        mediaSessionHandler.initMediaSession(this);
 
 
     }
@@ -114,6 +116,5 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
         }
 
     }
-
 
 }

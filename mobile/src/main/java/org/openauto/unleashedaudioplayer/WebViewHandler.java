@@ -1,6 +1,5 @@
 package org.openauto.unleashedaudioplayer;
 
-
 import android.content.Context;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -35,10 +34,36 @@ public class WebViewHandler {
         webview.setWebChromeClient(new WebChromeClient());
         webview.setWebViewClient(new WebViewClient());
         webview.addJavascriptInterface(new WebAppInterface(context), "Android");
-        loadAlbumPage();
         webview.loadUrl("file:///android_asset/index.html");
 
     }
+
+
+    public void nextTrack(){
+        webview.post(new Runnable() {
+            @Override
+            public void run() {
+                webview.loadUrl("javascript:playNextTrack()");
+            }
+        });
+    }
+    public void prevTrack(){
+        webview.post(new Runnable() {
+            @Override
+            public void run() {
+                webview.loadUrl("javascript:playPrevTrack()");
+            }
+        });
+    }
+    public void playPause(){
+        webview.post(new Runnable() {
+            @Override
+            public void run() {
+                webview.loadUrl("javascript:playPause()");
+            }
+        });
+    }
+
 
     public void loadAlbumPage(){
         Gson g = new Gson();

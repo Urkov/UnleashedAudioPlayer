@@ -1,3 +1,5 @@
+var playingAudio = false;
+
 function b64EncodeUnicode(str) {
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
         return String.fromCharCode(parseInt(p1, 16))
@@ -12,6 +14,26 @@ function b64DecodeUnicode(str) {
 function goToAlbums(toast) {
     Android.goToAlbums("XX");
 }
+
+function playPause(){
+    if(playingAudio){
+        $("#audio-player")[0].pause();
+        playingAudio = false;
+    } else {
+        $("#audio-player")[0].play();
+        playingAudio = true;
+    }
+}
+
+function playPrevTrack(){
+    var prevTrack = $(".track-item-selected").prev();
+    if($(prevTrack).hasClass("track-item")){
+        playTrack(prevTrack);
+    } else {
+        playTrack($(".track-item").last());
+    }
+}
+
 function playNextTrack(){
     var nextTrack = $(".track-item-selected").next();
     if($(nextTrack).hasClass("track-item")){
@@ -28,6 +50,8 @@ function playTrack(element){
     $("#audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
     $("#audio-player")[0].load();
     $("#audio-player")[0].play();
+    playingAudio = true;
+
 }
 function createTrackGrid(jsonTracks){
     var obj = JSON.parse(jsonTracks);
