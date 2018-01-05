@@ -56,8 +56,9 @@ body {
     border: 1px solid gray;
 }
 .track-item {
+    font-size: 110%;
     margin: 5px;
-    padding: 2px;
+    padding: 5px;
     border: 1px solid gray;
     display: block;
     overflow: hidden;
