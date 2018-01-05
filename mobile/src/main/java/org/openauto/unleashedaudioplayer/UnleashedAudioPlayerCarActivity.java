@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.webkit.WebView;
 
 import com.google.android.apps.auto.sdk.CarActivity;
 
 public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
+    public MediaSessionHandler mediaSessionHandler;
     public WebViewHandler webViewHandler;
     private static final String CURRENT_FRAGMENT_KEY = "app_current_fragment";
     private String mCurrentFragmentTag;
@@ -53,7 +55,7 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
                 false);
 
         //Init a media session to handle control actions via steering wheel or headset
-        MediaSessionHandler mediaSessionHandler = new MediaSessionHandler();
+        mediaSessionHandler = new MediaSessionHandler();
         mediaSessionHandler.initMediaSession(this);
 
 
@@ -115,6 +117,23 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
             webViewHandler = new WebViewHandler(this, wbb);
         }
 
+        mediaSessionHandler.mSession.setActive(true);
+
+    }
+
+    @Override
+    public boolean onKeyDown(int i, KeyEvent keyEvent) {
+        return super.onKeyDown(i, keyEvent);
+    }
+
+    @Override
+    public boolean onKeyLongPress(int i, KeyEvent keyEvent) {
+        return super.onKeyLongPress(i, keyEvent);
+    }
+
+    @Override
+    public boolean onKeyUp(int i, KeyEvent keyEvent) {
+        return super.onKeyUp(i, keyEvent);
     }
 
 }
