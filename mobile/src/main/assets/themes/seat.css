@@ -1,0 +1,9 @@
+.album-item {
+    border: 1px solid #F20017 !important;
+}
+.track-item {
+    border: 1px solid #F20017 !important;
+}
+.file-type-box, .year-box {
+    border: 1px solid #F20017 !important;
+}
