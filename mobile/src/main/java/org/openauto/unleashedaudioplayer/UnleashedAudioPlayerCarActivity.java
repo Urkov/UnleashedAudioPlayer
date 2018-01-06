@@ -56,7 +56,6 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
         //Init a media session to handle control actions via steering wheel or headset
         mediaSessionHandler = new MediaSessionHandler();
-        mediaSessionHandler.initMediaSession(this);
 
 
     }
@@ -117,7 +116,8 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
             webViewHandler = new WebViewHandler(this, wbb);
         }
 
-        mediaSessionHandler.mSession.setActive(true);
+        mediaSessionHandler.releaseMediaSession();
+        mediaSessionHandler.initMediaSession(this);
 
     }
 

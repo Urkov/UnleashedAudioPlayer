@@ -17,6 +17,12 @@ public class MediaSessionHandler {
 
     public MediaSessionCompat mSession;
 
+    public void releaseMediaSession(){
+        if(mSession != null){
+            mSession.release();
+        }
+    }
+
     public void initMediaSession(final UnleashedAudioPlayerCarActivity activity){
 
         //Create audio session
