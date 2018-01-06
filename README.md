@@ -12,6 +12,7 @@ I am not responsible for any damage caused by this application.
 ## Features:
 
 - It can play music ;-)
+- Supports media buttons of steering wheel (might not work in all cars - please create issue if not working) 
 
 ## How to install:
 
@@ -21,7 +22,7 @@ I am not responsible for any damage caused by this application.
 - Connect phone to AA Head Unit and select the OEM tab
 - App permissions must be granted manually via the App menu of the phone, or by launching the phone Activity first
 
-## How to user:
+## How to use:
 
 - Select album in the main view
 - Select a track in the track view
