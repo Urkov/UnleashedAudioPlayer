@@ -18,6 +18,15 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
     private String mCurrentFragmentTag;
 
     @Override
+    public void onDestroy() {
+        //Stop playing when disconnecting phone
+        if(webViewHandler != null){
+            webViewHandler.stopPlaying();
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public void onCreate(Bundle bundle) {
 
         setTheme(R.style.AppTheme_Car);

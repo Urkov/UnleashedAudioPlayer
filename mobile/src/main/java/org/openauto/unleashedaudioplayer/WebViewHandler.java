@@ -38,30 +38,17 @@ public class WebViewHandler {
 
     }
 
-
+    public void stopPlaying(){
+        webview.post(() -> webview.loadUrl("javascript:stopPlaying()"));
+    }
     public void nextTrack(){
-        webview.post(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("javascript:playNextTrack()");
-            }
-        });
+        webview.post(() -> webview.loadUrl("javascript:playNextTrack()"));
     }
     public void prevTrack(){
-        webview.post(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("javascript:playPrevTrack()");
-            }
-        });
+        webview.post(() -> webview.loadUrl("javascript:playPrevTrack()"));
     }
     public void playPause(){
-        webview.post(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("javascript:playPause()");
-            }
-        });
+        webview.post(() -> webview.loadUrl("javascript:playPause()"));
     }
 
 

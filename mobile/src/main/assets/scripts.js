@@ -15,6 +15,12 @@ function goToAlbums(toast) {
     Android.goToAlbums("XX");
 }
 
+function stopPlaying(){
+    $("#audio-player")[0].pause();
+    this.currentTime = 0;
+    playingAudio = false;
+}
+
 function playPause(){
     if(playingAudio){
         $("#audio-player")[0].pause();
