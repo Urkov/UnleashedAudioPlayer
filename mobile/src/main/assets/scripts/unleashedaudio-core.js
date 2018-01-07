@@ -70,13 +70,19 @@ function playTrack(element){
 
 
 function playPauseWebradio(element){
-    if(playingAudio){
-        stopPlaying();
+    if($(element).data("playing")){
+        //force an empty source to stop using bandwidth
+        $(".audio-player").children()[0].src = "";
+        $(".audio-player")[0].load();
+        $(".audio-player")[0].play();
+        $(element).data("playing", false);
+        playingAudio = false;
     } else {
         var stream = $(element).data("stream");
         $(".audio-player").children()[0].src = stream;
         $(".audio-player")[0].load();
         $(".audio-player")[0].play();
+        $(element).data("playing", true);
         playingAudio = true;
     }
 }
