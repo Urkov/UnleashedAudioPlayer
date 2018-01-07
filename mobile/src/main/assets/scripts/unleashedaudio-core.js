@@ -99,7 +99,7 @@ function createRadioGrid(webRadio){
             albumArtFile = "img/nocover.png";
         }
         var coverHTML = "<div><img class='album-img' src='"+e.cover+"'></img></div>"
-        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-stream='" + e.stream + "' class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
 }
