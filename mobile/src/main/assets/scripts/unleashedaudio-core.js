@@ -11,22 +11,27 @@ function b64DecodeUnicode(str) {
     }).join(''))
 }
 
+function goToView(view){
+    $(".view").hide();
+    $(view).show();
+}
+
 function goToAlbums(toast) {
     Android.goToAlbums("XX");
 }
 
 function stopPlaying(){
-    $("#audio-player")[0].pause();
+    $(".audio-player")[0].pause();
     this.currentTime = 0;
     playingAudio = false;
 }
 
 function playPause(){
     if(playingAudio){
-        $("#audio-player")[0].pause();
+        $(".audio-player")[0].pause();
         playingAudio = false;
     } else {
-        $("#audio-player")[0].play();
+        $(".audio-player")[0].play();
         playingAudio = true;
     }
 }
@@ -53,9 +58,9 @@ function playTrack(element){
     $(element).addClass("track-item-selected");
     var file = $(element).data("file");
     console.log(b64DecodeUnicode(file));
-    $("#audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
-    $("#audio-player")[0].load();
-    $("#audio-player")[0].play();
+    $(".audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
+    $(".audio-player")[0].load();
+    $(".audio-player")[0].play();
     playingAudio = true;
 
 }
@@ -64,9 +69,9 @@ function createTrackGrid(jsonTracks){
     var coverArt = "";
     var fileExt = "";
     var year = "";
-    $("#track-container").empty();
+    $(".track-container").empty();
     $.each(obj, function(i,e){
-        $("#track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
+        $(".track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
         coverArt = e.coverArt;
         if(coverArt === undefined){
             coverArt = "img/nocover.png";
@@ -81,11 +86,10 @@ function createTrackGrid(jsonTracks){
     } else {
         $(".year-box").show();
     }
-    $("#coverart-img")[0].src = coverArt;
-    $("#track-container").show();
-    $("#cover-container").show();
-    $("#audio-player").show();
-    $("#album-container").hide();
+    $(".coverart-img")[0].src = coverArt;
+
+    goToView(".track-view");
+
 }
 
 function selectTrack(toast) {
@@ -94,7 +98,7 @@ function selectTrack(toast) {
 
 function createAlbumGrid(jsonAlbums){
     var obj = JSON.parse(jsonAlbums);
-    $("#album-container").empty();
+    $(".album-container").empty();
     $.each(obj, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";
         var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.name+"</span></div>";
@@ -103,19 +107,18 @@ function createAlbumGrid(jsonAlbums){
             albumArtFile = "img/nocover.png";
         }
         var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>"
-        $("#album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
-    $("#track-container").hide();
-    $("#cover-container").hide();
-    $("#audio-player").hide();
-    $("#album-container").show();
+
+    goToView(".album-view");
+
 }
 
 function initView(){
     goToAlbums();
 
     //bind event to detect when a track has finished playing
-    var audioPlayer = $("#audio-player")[0];
+    var audioPlayer = $(".audio-player")[0];
     audioPlayer.addEventListener("ended", function(){
           audioPlayer.currentTime = 0;
           playNextTrack();

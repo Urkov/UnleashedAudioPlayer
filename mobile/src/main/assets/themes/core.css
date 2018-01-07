@@ -8,6 +8,9 @@ body {
     color: white;
     margin-top: 4px;
 }
+.view {
+    display: none;
+}
 .album-img {
     display: block;
     height: auto;
@@ -27,30 +30,30 @@ body {
      white-space: nowrap;
      overflow: hidden;
 }
-#album-container {
+.album-container {
     text-align: center;
 }
-#track-container {
+.track-container {
     width: 50%;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     float: left;
 }
-#track-container div:first-child {
+.track-container div:first-child {
     margin-top: 0 !important;
 }
-#track-container div:last-child {
+.track-container div:last-child {
     margin-bottom: 0 !important;
 }
-#cover-container{
+.cover-container{
     width: 50%;
     display: inline-block;
     vertical-align: top;
     position: fixed;
     text-align: center;
 }
-#coverart-img {
+.coverart-img {
     width: 80%;
     height: 80%;
     border: 1px solid gray;
@@ -84,7 +87,7 @@ body {
     padding-top: 2px;
     padding-bottom: 1px;
 }
-#audio-player {
+.audio-player {
     width: 50%;
     position: fixed;
     bottom: 0;
