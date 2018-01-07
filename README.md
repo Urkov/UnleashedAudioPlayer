@@ -28,6 +28,30 @@ I am not responsible for any damage caused by this application.
 - Select a track in the track view
 - To return to album view, tap on the art cover
 
+## Webradio support
+
+- Create "Radio" folder at the root of your internal storage (External sd card won't work)
+- Copy a radio.txt file which contains the radio stations and their covers. An example follows
+- To start playing tap on the cover. Tap again to stop playing.
+- Caution: Webradio might consume a lot of data. Check your tariff before using.
+
+```
+[
+   {
+      "title":"Radio Station 1",
+      "subtitle":"320kbit",
+      "stream":"http://url.mp3",
+      "cover":"data:image/png;base64,????????????"
+   },
+   {
+      "title":"Radio Station 2",
+      "subtitle":"128kbit",
+      "stream":"http://url.mp3",
+      "cover":"data:image/png;base64,????????????"
+   }
+]
+```
+
 ![alt text](https://raw.githubusercontent.com/nerone-github/LocalSpeedcam/master/images/devsettings.png)
 
 ## Screenshots
