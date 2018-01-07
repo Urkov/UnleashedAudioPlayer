@@ -10,6 +10,9 @@ import android.webkit.WebViewClient;
 import com.google.gson.Gson;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.openauto.unleashedaudioplayer.entities.AlbumModel;
+import org.openauto.unleashedaudioplayer.entities.TrackModel;
+import org.openauto.unleashedaudioplayer.entities.WebradioModel;
 
 import java.util.ArrayList;
 import java.util.List;

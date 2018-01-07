@@ -9,10 +9,13 @@ import android.provider.MediaStore;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.openauto.unleashedaudioplayer.entities.AlbumModel;
+import org.openauto.unleashedaudioplayer.entities.TrackModel;
+import org.openauto.unleashedaudioplayer.entities.WebradioModel;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

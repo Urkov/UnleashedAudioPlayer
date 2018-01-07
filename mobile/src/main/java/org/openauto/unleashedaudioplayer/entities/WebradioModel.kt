@@ -1,4 +1,4 @@
-package org.openauto.unleashedaudioplayer
+package org.openauto.unleashedaudioplayer.entities
 
 class WebradioModel : Comparable<WebradioModel> {
 
