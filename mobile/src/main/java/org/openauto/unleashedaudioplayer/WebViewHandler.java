@@ -34,6 +34,7 @@ public class WebViewHandler {
         wbset.setAllowContentAccess(true);
         wbset.setAllowFileAccess(true);
         wbset.setAllowFileAccessFromFileURLs(true);
+        webview.setScrollbarFadingEnabled(false);
         webview.setWebChromeClient(new WebChromeClient());
         webview.setWebViewClient(new WebViewClient());
         webview.addJavascriptInterface(new WebAppInterface(context), "Android");
