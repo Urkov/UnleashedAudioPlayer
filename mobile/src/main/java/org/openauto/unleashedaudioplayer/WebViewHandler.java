@@ -1,5 +1,6 @@
 package org.openauto.unleashedaudioplayer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -13,6 +14,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("WeakerAccess")
 public class WebViewHandler {
 
     private ArrayList<AlbumModel> albums;
@@ -20,6 +22,7 @@ public class WebViewHandler {
     private WebView webview;
     private Context context;
 
+    @SuppressLint("SetJavaScriptEnabled")
     public WebViewHandler(Context context, WebView webview){
         this.webview = webview;
         this.context = context;
@@ -54,14 +57,8 @@ public class WebViewHandler {
 
     public void loadAlbumPage(){
         Gson g = new Gson();
-        final String jsonAlbums = g.toJson(albums);
-        jsonToPass = jsonAlbums;
-        webview.post(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("javascript:createAlbumGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")");
-            }
-        });
+        jsonToPass = g.toJson(albums);
+        webview.post(() -> webview.loadUrl("javascript:createAlbumGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
     }
 
     public void loadTrackPage(int albumIdToLoad){
@@ -73,15 +70,8 @@ public class WebViewHandler {
         }
         List<TrackModel> songs = MediaStoreHandler.getTracksForAlbum(context, albumToLoad);
         Gson g = new Gson();
-        final String jsonSongs = g.toJson(songs);
-        jsonToPass = jsonSongs;
-
-        webview.post(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("javascript:createTrackGrid(\"" +  StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")");
-            }
-        });
+        jsonToPass = g.toJson(songs);
+        webview.post(() -> webview.loadUrl("javascript:createTrackGrid(\"" +  StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
     }
 
 }
