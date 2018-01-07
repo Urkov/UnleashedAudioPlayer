@@ -12,7 +12,7 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void selectTrack(String str) {
+    public void loadTracks(String str) {
         int albumid = Integer.parseInt(str);
         if (context instanceof UnleashedAudioPlayerPhoneActivity){
             ((UnleashedAudioPlayerPhoneActivity)context).webViewHandler.loadTrackPage(albumid);
@@ -24,12 +24,22 @@ public class WebAppInterface {
     }
 
     @JavascriptInterface
-    public void goToAlbums(String str) {
+    public void loadAlbums(String str) {
         if (context instanceof UnleashedAudioPlayerPhoneActivity){
             ((UnleashedAudioPlayerPhoneActivity)context).webViewHandler.loadAlbumPage();
         }
         if (context instanceof UnleashedAudioPlayerCarActivity){
             ((UnleashedAudioPlayerCarActivity)context).webViewHandler.loadAlbumPage();
+        }
+    }
+
+    @JavascriptInterface
+    public void loadWebradio(String str) {
+        if (context instanceof UnleashedAudioPlayerPhoneActivity){
+            ((UnleashedAudioPlayerPhoneActivity)context).webViewHandler.loadWebradio();
+        }
+        if (context instanceof UnleashedAudioPlayerCarActivity){
+            ((UnleashedAudioPlayerCarActivity)context).webViewHandler.loadWebradio();
         }
     }
 

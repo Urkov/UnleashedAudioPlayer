@@ -18,6 +18,8 @@ import java.util.List;
 public class WebViewHandler {
 
     private ArrayList<AlbumModel> albums;
+    private ArrayList<WebradioModel> webradio;
+
     private String jsonToPass;
     private WebView webview;
     private Context context;
@@ -27,6 +29,7 @@ public class WebViewHandler {
         this.webview = webview;
         this.context = context;
         albums = MediaStoreHandler.getListOfAlbums(context);
+        webradio = MediaStoreHandler.getWebradioList(context);
 
         //load web view
         WebSettings wbset=webview.getSettings();
@@ -55,6 +58,11 @@ public class WebViewHandler {
         webview.post(() -> webview.loadUrl("javascript:playPause()"));
     }
 
+    public void loadWebradio(){
+        Gson g = new Gson();
+        jsonToPass = g.toJson(webradio);
+        webview.post(() -> webview.loadUrl("javascript:createRadioGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+    }
 
     public void loadAlbumPage(){
         Gson g = new Gson();

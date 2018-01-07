@@ -16,8 +16,11 @@ function goToView(view){
     $(view).show();
 }
 
-function goToAlbums(toast) {
-    Android.goToAlbums("XX");
+function loadAlbums() {
+    Android.loadAlbums("");
+}
+function loadWebradio() {
+    Android.loadWebradio("");
 }
 
 function stopPlaying(){
@@ -64,6 +67,37 @@ function playTrack(element){
     playingAudio = true;
 
 }
+
+
+function playPauseWebradio(element){
+    if(playingAudio){
+        stopPlaying();
+    } else {
+        var stream = $(element).data("stream");
+        $(".audio-player").children()[0].src = stream;
+        $(".audio-player")[0].load();
+        $(".audio-player")[0].play();
+        playingAudio = true;
+    }
+}
+
+function createRadioGrid(webRadio){
+
+    var obj = JSON.parse(webRadio);
+    $(".radio-container").empty();
+    $.each(obj, function(i,e){
+        var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.title+"</span></div>";
+        var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.subtitle+"</span></div>";
+        var albumArtFile = e.art;
+        if(e.art === undefined){
+            albumArtFile = "img/nocover.png";
+        }
+        var coverHTML = "<div><img class='album-img' src='"+e.cover+"'></img></div>"
+        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-stream='" + e.stream + "' class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+    });
+
+}
+
 function createTrackGrid(jsonTracks){
     var obj = JSON.parse(jsonTracks);
     var coverArt = "";
@@ -92,8 +126,8 @@ function createTrackGrid(jsonTracks){
 
 }
 
-function selectTrack(toast) {
-    Android.selectTrack(toast);
+function loadTracks(id) {
+    Android.loadTracks(id);
 }
 
 function createAlbumGrid(jsonAlbums){
@@ -107,7 +141,7 @@ function createAlbumGrid(jsonAlbums){
             albumArtFile = "img/nocover.png";
         }
         var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>"
-        $(".album-container").append("<div onClick=\"selectTrack('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".album-container").append("<div onClick=\"loadTracks('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
     goToView(".album-view");
@@ -115,7 +149,8 @@ function createAlbumGrid(jsonAlbums){
 }
 
 function initView(){
-    goToAlbums();
+    loadAlbums();
+    loadWebradio();
 
     //bind event to detect when a track has finished playing
     var audioPlayer = $(".audio-player")[0];

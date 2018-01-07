@@ -3,8 +3,16 @@ package org.openauto.unleashedaudioplayer;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -106,6 +114,41 @@ public class MediaStoreHandler {
 
         Collections.sort(list);
         return list;
+    }
+
+
+    public static ArrayList<WebradioModel> getWebradioList(Context context) {
+
+        ArrayList<WebradioModel> list = null;
+
+        //Try to read webradio information
+        try {
+            final File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "Radio/radio.txt");
+            StringBuilder text = new StringBuilder();
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+
+            Gson gson = new Gson();
+            list = gson.fromJson(text.toString(), new TypeToken<List<WebradioModel>>(){}.getType());
+        }
+        catch (Exception e) {
+            //You'll need to add proper error handling here
+        }
+
+        if(list != null){
+            Collections.sort(list);
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
+
     }
 
     private static String getFileExt(String fileName){

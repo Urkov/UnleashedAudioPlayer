@@ -30,7 +30,7 @@ body {
      white-space: nowrap;
      overflow: hidden;
 }
-.album-container {
+.album-container, .radio-container {
     text-align: center;
 }
 .track-container {
