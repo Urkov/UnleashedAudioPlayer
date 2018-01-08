@@ -14,7 +14,11 @@ function b64DecodeUnicode(str) {
 function goToView(view){
     $(".view").hide();
     $(view).show();
-    $.toast('loaded');
+    showToast("goToView: " + view);
+}
+
+function showToast(msg){
+    $.toast(msg);
 }
 
 function loadAlbums() {
