@@ -18,6 +18,7 @@ function goToView(view){
 }
 
 function showToast(msg){
+    //Uncomment this for additional on-screen debugging info during AA session
     $.toast(msg);
 }
 
@@ -29,12 +30,14 @@ function loadWebradio() {
 }
 
 function stopPlaying(){
+    showToast("stopPlaying");
     $(".audio-player")[0].pause();
     this.currentTime = 0;
     playingAudio = false;
 }
 
 function playPause(){
+    showToast("playPause");
     if(playingAudio){
         $(".audio-player")[0].pause();
         playingAudio = false;
@@ -45,6 +48,7 @@ function playPause(){
 }
 
 function playPrevTrack(){
+    showToast("playPrevTrack");
     var prevTrack = $(".track-item-selected").prev();
     if($(prevTrack).hasClass("track-item")){
         playTrack(prevTrack);
@@ -54,6 +58,7 @@ function playPrevTrack(){
 }
 
 function playNextTrack(){
+    showToast("playNextTrack");
     var nextTrack = $(".track-item-selected").next();
     if($(nextTrack).hasClass("track-item")){
         playTrack(nextTrack);
@@ -62,6 +67,7 @@ function playNextTrack(){
     }
 }
 function playTrack(element){
+    showToast("playTrack");
     $(".track-item").removeClass("track-item-selected");
     $(element).addClass("track-item-selected");
     var file = $(element).data("file");
@@ -93,8 +99,8 @@ function playPauseWebradio(element){
 }
 
 function createRadioGrid(webRadio){
-
     var obj = JSON.parse(webRadio);
+    showToast("Radio items: " + obj.length);
     $(".radio-container").empty();
     $.each(obj, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.title+"</span></div>";
@@ -143,6 +149,7 @@ function loadTracks(id) {
 
 function createAlbumGrid(jsonAlbums){
     var obj = JSON.parse(jsonAlbums);
+    showToast("Album items: " + obj.length);
     $(".album-container").empty();
     $.each(obj, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";

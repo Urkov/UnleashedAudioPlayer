@@ -12,7 +12,6 @@ import com.google.android.apps.auto.sdk.CarActivity;
 
 public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
-    public MediaSessionHandler mediaSessionHandler;
     public WebViewHandler webViewHandler;
     private static final String CURRENT_FRAGMENT_KEY = "app_current_fragment";
     private String mCurrentFragmentTag;
@@ -28,6 +27,9 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
     @Override
     public void onCreate(Bundle bundle) {
+
+        //set the activity for shared access from music service
+        ActivityAccessHelper.getInstance().activity = this;
 
         setTheme(R.style.AppTheme_Car);
         super.onCreate(bundle);
@@ -62,9 +64,6 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
         getSupportFragmentManager().registerFragmentLifecycleCallbacks(mFragmentLifecycleCallbacks,
                 false);
-
-        //Init a media session to handle control actions via steering wheel or headset
-        mediaSessionHandler = new MediaSessionHandler();
 
 
     }
@@ -125,23 +124,25 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
             webViewHandler = new WebViewHandler(this, wbb);
         }
 
-        mediaSessionHandler.releaseMediaSession();
-        mediaSessionHandler.initMediaSession(this);
+        webViewHandler.showToast("updateBrowserFragment");
 
     }
 
     @Override
     public boolean onKeyDown(int i, KeyEvent keyEvent) {
+        webViewHandler.showToast(keyEvent.toString());
         return super.onKeyDown(i, keyEvent);
     }
 
     @Override
     public boolean onKeyLongPress(int i, KeyEvent keyEvent) {
+        webViewHandler.showToast(keyEvent.toString());
         return super.onKeyLongPress(i, keyEvent);
     }
 
     @Override
     public boolean onKeyUp(int i, KeyEvent keyEvent) {
+        webViewHandler.showToast(keyEvent.toString());
         return super.onKeyUp(i, keyEvent);
     }
 

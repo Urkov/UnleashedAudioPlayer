@@ -48,6 +48,9 @@ public class WebViewHandler {
 
     }
 
+    public void showToast(String msg){
+        webview.post(() -> webview.loadUrl("javascript:showToast(\"" + StringEscapeUtils.escapeEcmaScript(msg) + "\")"));
+    }
     public void stopPlaying(){
         webview.post(() -> webview.loadUrl("javascript:stopPlaying()"));
     }
@@ -65,12 +68,14 @@ public class WebViewHandler {
         Gson g = new Gson();
         jsonToPass = g.toJson(webradio);
         webview.post(() -> webview.loadUrl("javascript:createRadioGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+        showToast("loadWebradio");
     }
 
     public void loadAlbumPage(){
         Gson g = new Gson();
         jsonToPass = g.toJson(albums);
         webview.post(() -> webview.loadUrl("javascript:createAlbumGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+        showToast("loadAlbumPage");
     }
 
     public void loadTrackPage(int albumIdToLoad){
