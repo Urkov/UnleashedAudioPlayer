@@ -19,7 +19,7 @@ function goToView(view){
 
 function showToast(msg){
     //Uncomment this for additional on-screen debugging info during AA session
-    $.toast(msg);
+    //$.toast(msg);
 }
 
 function loadAlbums() {
