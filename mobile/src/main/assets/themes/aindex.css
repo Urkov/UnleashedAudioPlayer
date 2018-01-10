@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.a-selector-opened {
+    background: rgba(26, 24, 24, 0.7);
+    border-radius: 0;
+}
+
 .a-selector {
     display: flex;
     justify-content: center;
@@ -26,7 +31,7 @@
 
 .a-selector span,
 .a-selector-index div {
-    background-color: teal;
+    background-color: #2196F3;
     color: white;
 }
 

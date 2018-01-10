@@ -21,24 +21,30 @@ function iconActionTop() {
 
 function iconActionAlpha() {
     $('.a-selector-index').fadeToggle();
+    //background for better visibility
+    $('.a-selector-index').toggleClass("a-selector-opened");
 }
 
 function iconActionBottom() {
     $('html, body').animate({ scrollTop: $(document).height() }, 200);
 }
 
-//initialize
-$(".album-item").each(function(i, e) {
-    var idx = $(e).data("index");
-    if (!indexExists(idx)) {
-        $(".a-selector-index").append("<div data-index='" + idx + "'><span>" + idx + "</span></div>");
-    }
-});
-
-//bind js function
-$(".a-selector-index div").each(function(i, e) {
-    $(e).click(function() {
-        goToByScroll($(this).data("index"), ".album-item");
-        $('.a-selector-index').fadeToggle();
+function initAlphaIndex(){
+    //initialize
+    $(".album-item").each(function(i, e) {
+        console.log(e);
+        var idx = $(e).data("index");
+        if (!indexExists(idx)) {
+            $(".a-selector-index").append("<div data-index='" + idx + "'><span>" + idx + "</span></div>");
+        }
     });
-});
+
+    //bind js function
+    $(".a-selector-index div").each(function(i, e) {
+        $(e).click(function() {
+            goToByScroll($(this).data("index"), ".album-item");
+            $('.a-selector-index').fadeToggle();
+        });
+    });
+}
+

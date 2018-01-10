@@ -110,7 +110,8 @@ function createRadioGrid(webRadio){
             albumArtFile = "img/nocover.png";
         }
         var coverHTML = "<div><img class='album-img' src='"+e.cover+"'></img></div>"
-        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        var indexLetter = e.title.charAt(0).toUpperCase();
+        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
 }
@@ -140,6 +141,7 @@ function createTrackGrid(jsonTracks){
     $(".coverart-img")[0].src = coverArt;
 
     goToView(".track-view");
+    $(".a-selector").hide();
 
 }
 
@@ -150,7 +152,6 @@ function loadTracks(id) {
 function createAlbumGrid(jsonAlbums){
     var obj = JSON.parse(jsonAlbums);
     showToast("Album items: " + obj.length);
-    $(".album-container").empty();
     $.each(obj, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";
         var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.name+"</span></div>";
@@ -158,11 +159,13 @@ function createAlbumGrid(jsonAlbums){
         if(e.art === undefined){
             albumArtFile = "img/nocover.png";
         }
-        var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>"
-        $(".album-container").append("<div onClick=\"loadTracks('"+e.id+"');\" class='album-item'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>";
+        var indexLetter = e.artist.charAt(0).toUpperCase();
+        $(".album-container").append("<div onClick=\"loadTracks('"+e.id+"');\" class='album-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
     goToView(".album-view");
+    $(".a-selector").show();
 
 }
 
@@ -176,4 +179,9 @@ function initView(){
           audioPlayer.currentTime = 0;
           playNextTrack();
      });
+
+    setTimeout(function(){
+     initAlphaIndex();
+    },200);
+
 }

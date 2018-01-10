@@ -3,14 +3,33 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="scripts/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="scripts/jquery.toast.min.js" type="text/javascript"></script>
     <script src="scripts/unleashedaudio-core.js" type="text/javascript"></script>
+    <script src="scripts/unleashedaudio-aindex.js" type="text/javascript"></script>
+
     <link rel="stylesheet" type="text/css" href="themes/core.css">
+    <link rel="stylesheet" type="text/css" href="themes/aindex.css">
     <link rel="stylesheet" type="text/css" href="themes/jquery.toast.min.css">
 </head>
 
 <body onload="setTimeout(function(){initView();},200);">
+
+
+<div class="a-selector a-selector-common">
+    <div onclick="iconActionTop();">
+        <span class="a-selector-icon">&#xF05E;</span>
+    </div>
+    <div onclick="iconActionAlpha();">
+        <span class="a-selector-icon">&#xF4BB;</span>
+    </div>
+    <div onclick="iconActionBottom();">
+        <span class="a-selector-icon">&#xF046;</span>
+    </div>
+</div>
+<div class="a-selector-index a-selector-common">
+</div>
 
 <!-- album view -->
 <div class="view album-view">
@@ -21,7 +40,7 @@
 <div class="view track-view">
     <div class="track-container"></div>
     <div class="cover-container">
-        <img onclick="goToView('.album-view');" class="coverart-img" src="">
+        <img onclick="goToView('.album-view'); $('.a-selector').show();" class="coverart-img" src="">
         <br>
         <span class='file-type-box'></span>
         <span class='year-box' style="display: none;"></span>
