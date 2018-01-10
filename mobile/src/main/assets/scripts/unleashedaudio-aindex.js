@@ -15,8 +15,12 @@ function indexExists(idx) {
     return $(".a-selector-index div[data-index=" + idx + "]").length > 0;
 }
 
+function iconActionScroll(amount){
+    window.scrollBy(0,amount);
+}
+
 function iconActionTop() {
-    $('html, body').animate({ scrollTop: 0 }, 200);
+    $('html, body').animate({ scrollTop: 0 }, 400);
 }
 
 function iconActionAlpha() {
@@ -24,7 +28,7 @@ function iconActionAlpha() {
 }
 
 function iconActionBottom() {
-    $('html, body').animate({ scrollTop: $(document).height() }, 200);
+    $('html, body').animate({ scrollTop: $(document).height() }, 400);
 }
 
 function hideAlphaIndex(){
