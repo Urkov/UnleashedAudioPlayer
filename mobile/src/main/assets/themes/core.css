@@ -2,6 +2,23 @@
     font-family: 'AlegreyaSans-Regular';
     src: url('file:///android_asset/fonts/AlegreyaSans-Regular.ttf');
 }
+
+@font-face {
+    font-family: 'RobotoMono-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url("file:///android_asset/fonts/RobotoMono-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Material Design Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url("file:///android_asset/fonts/materialdesignicons.ttf") format('truetype');
+}
+
+
+
 body {
     font-family: 'AlegreyaSans-Regular';
     background: black;
