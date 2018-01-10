@@ -99,10 +99,10 @@ function playPauseWebradio(element){
 }
 
 function createRadioGrid(webRadio){
-    var obj = JSON.parse(webRadio);
-    showToast("Radio items: " + obj.length);
+    var webRadioObjects = JSON.parse(webRadio);
+    showToast("Radio items: " + webRadioObjects.length);
     $(".radio-container").empty();
-    $.each(obj, function(i,e){
+    $.each(webRadioObjects, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.title+"</span></div>";
         var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.subtitle+"</span></div>";
         var albumArtFile = e.art;
@@ -117,12 +117,12 @@ function createRadioGrid(webRadio){
 }
 
 function createTrackGrid(jsonTracks){
-    var obj = JSON.parse(jsonTracks);
+    var trackObjects = JSON.parse(jsonTracks);
     var coverArt = "";
     var fileExt = "";
     var year = "";
     $(".track-container").empty();
-    $.each(obj, function(i,e){
+    $.each(trackObjects, function(i,e){
         $(".track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
         coverArt = e.coverArt;
         if(coverArt === undefined){
@@ -150,9 +150,9 @@ function loadTracks(id) {
 }
 
 function createAlbumGrid(jsonAlbums){
-    var obj = JSON.parse(jsonAlbums);
-    showToast("Album items: " + obj.length);
-    $.each(obj, function(i,e){
+    var albumObjects = JSON.parse(jsonAlbums);
+    showToast("Album items: " + albumObjects.length);
+    $.each(albumObjects, function(i,e){
         var artistHTML = "<div class='artist-text-item'><span class='track-item-title'>"+e.artist+"</span></div>";
         var albumHTML = "<div class='album-text-item'><span class='track-item-title'>"+e.name+"</span></div>";
         var albumArtFile = e.art;
