@@ -23,7 +23,6 @@ public class WebViewHandler {
     private ArrayList<AlbumModel> albums;
     private ArrayList<WebradioModel> webradio;
 
-    private String jsonToPass;
     private WebView webview;
     private Context context;
 
@@ -66,15 +65,13 @@ public class WebViewHandler {
 
     public void loadWebradio(){
         Gson g = new Gson();
-        jsonToPass = g.toJson(webradio);
-        webview.post(() -> webview.loadUrl("javascript:createRadioGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+        webview.post(() -> webview.loadUrl("javascript:createRadioGrid(\"" + StringEscapeUtils.escapeEcmaScript(g.toJson(webradio)) + "\")"));
         showToast("loadWebradio");
     }
 
     public void loadAlbumPage(){
         Gson g = new Gson();
-        jsonToPass = g.toJson(albums);
-        webview.post(() -> webview.loadUrl("javascript:createAlbumGrid(\"" + StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+        webview.post(() -> webview.loadUrl("javascript:createAlbumGrid(\"" + StringEscapeUtils.escapeEcmaScript(g.toJson(albums)) + "\")"));
         showToast("loadAlbumPage");
     }
 
@@ -87,8 +84,7 @@ public class WebViewHandler {
         }
         List<TrackModel> songs = MediaStoreHandler.getTracksForAlbum(context, albumToLoad);
         Gson g = new Gson();
-        jsonToPass = g.toJson(songs);
-        webview.post(() -> webview.loadUrl("javascript:createTrackGrid(\"" +  StringEscapeUtils.escapeEcmaScript(jsonToPass) + "\")"));
+        webview.post(() -> webview.loadUrl("javascript:createTrackGrid(\"" +  StringEscapeUtils.escapeEcmaScript(g.toJson(songs)) + "\")"));
     }
 
 }
