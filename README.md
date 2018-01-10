@@ -58,3 +58,4 @@ I am not responsible for any damage caused by this application.
 
 ![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua1.png)
 ![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua2.png)
+![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua3.png)
