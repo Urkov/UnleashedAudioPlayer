@@ -1,0 +1,55 @@
+.a-selector-icon {
+    font-family: 'Material Design Icons' !important;
+    font-weight: normal !important;
+}
+
+.a-selector-common {
+    position: fixed;
+    font-size: 150%;
+    font-weight: bold;
+    border-radius: 10px;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+.a-selector {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.a-selector div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.a-selector span,
+.a-selector-index div {
+    background-color: teal;
+    color: white;
+}
+
+.a-selector span {
+    margin: 5px;
+    border-radius: 10px;
+    padding: 11px;
+}
+
+.a-selector-index div {
+    margin: 5px;
+    border-radius: 10px;
+    padding: 8px 16px 8px 16px;
+    display: inline;
+}
+
+.a-selector-index {
+    display: none;
+    margin-left: 100px;
+    max-width: 100%;
+    word-wrap: break-word;
+    width: 70%;
+    text-align: left;
+    line-height: 250%;
+}
+
