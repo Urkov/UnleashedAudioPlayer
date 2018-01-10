@@ -12,11 +12,6 @@
     cursor: pointer;
 }
 
-.a-selector-opened {
-    background: rgba(26, 24, 24, 0.7);
-    border-radius: 0;
-}
-
 .a-selector {
     display: flex;
     justify-content: center;
@@ -31,6 +26,7 @@
 
 .a-selector span,
 .a-selector-index div {
+    font-family: 'RobotoMono-Regular';
     background-color: #2196F3;
     color: white;
 }
@@ -56,5 +52,7 @@
     width: 70%;
     text-align: left;
     line-height: 250%;
+    background: rgba(26, 24, 24, 0.7);
+    border-radius: 0;
 }
 

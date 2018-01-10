@@ -14,7 +14,7 @@ function b64DecodeUnicode(str) {
 function goToView(view){
     $(".view").hide();
     $(view).show();
-    showToast("goToView: " + view);
+    //showToast("goToView: " + view);
 }
 
 function showToast(msg){
@@ -141,7 +141,7 @@ function createTrackGrid(jsonTracks){
     $(".coverart-img")[0].src = coverArt;
 
     goToView(".track-view");
-    $(".a-selector").hide();
+    hideAlphaIndex();
 
 }
 
@@ -165,14 +165,11 @@ function createAlbumGrid(jsonAlbums){
     });
 
     goToView(".album-view");
-    $(".a-selector").show();
+    initAlphaIndex();
 
 }
 
-function initView(){
-    loadAlbums();
-    loadWebradio();
-
+function initAudioPlayer(){
     //bind event to detect when a track has finished playing
     var audioPlayer = $(".audio-player")[0];
     audioPlayer.addEventListener("ended", function(){
@@ -180,8 +177,11 @@ function initView(){
           playNextTrack();
      });
 
-    setTimeout(function(){
-     initAlphaIndex();
-    },200);
+}
 
+function initView(){
+    showToast("initView");
+    loadAlbums();
+    loadWebradio();
+    initAudioPlayer();
 }

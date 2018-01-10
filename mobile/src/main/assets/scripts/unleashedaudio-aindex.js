@@ -21,15 +21,19 @@ function iconActionTop() {
 
 function iconActionAlpha() {
     $('.a-selector-index').fadeToggle();
-    //background for better visibility
-    $('.a-selector-index').toggleClass("a-selector-opened");
 }
 
 function iconActionBottom() {
     $('html, body').animate({ scrollTop: $(document).height() }, 200);
 }
 
+function hideAlphaIndex(){
+    $(".a-selector").hide();
+    $(".a-selector-index").hide();
+}
+
 function initAlphaIndex(){
+    showToast("initAlphaIndex");
     //initialize
     $(".album-item").each(function(i, e) {
         console.log(e);
@@ -46,5 +50,7 @@ function initAlphaIndex(){
             $('.a-selector-index').fadeToggle();
         });
     });
+    //show the selector
+    $(".a-selector").show();
 }
 
