@@ -36,10 +36,11 @@ function hideAlphaIndex(){
     $(".a-selector-index").hide();
 }
 
-function initAlphaIndex(){
+function initAlphaIndex(itemClass){
     showToast("initAlphaIndex");
+    $(".a-selector-index").empty();
     //initialize
-    $(".album-item").each(function(i, e) {
+    $(itemClass).each(function(i, e) {
         console.log(e);
         var idx = $(e).data("index");
         if (!indexExists(idx)) {
@@ -50,7 +51,7 @@ function initAlphaIndex(){
     //bind js function
     $(".a-selector-index div").each(function(i, e) {
         $(e).click(function() {
-            goToByScroll($(this).data("index"), ".album-item");
+            goToByScroll($(this).data("index"), itemClass);
             $('.a-selector-index').fadeToggle();
         });
     });

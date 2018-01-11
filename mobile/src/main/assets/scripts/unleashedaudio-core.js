@@ -124,7 +124,7 @@ function createRadioGrid(webRadio){
         }
         var coverHTML = "<div><img class='album-img' src='"+e.cover+"'></img></div>"
         var indexLetter = e.title.charAt(0).toUpperCase();
-        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item radio-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='radio-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
 }
@@ -178,7 +178,7 @@ function createAlbumGrid(jsonAlbums){
     });
 
     goToView(".album-view");
-    initAlphaIndex();
+    initAlphaIndex(".album-item");
 
 }
 

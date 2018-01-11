@@ -1,4 +1,4 @@
-.album-item {
+.album-item, .radio-item {
     border: 1px solid #F20017 !important;
 }
 .track-item {

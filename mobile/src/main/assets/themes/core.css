@@ -36,7 +36,7 @@ body {
     height: auto;
     width: 150px;
 }
-.album-item {
+.album-item, .radio-item {
     width: 150px;
     margin: 5px;
     display: inline-block;
