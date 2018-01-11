@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="themes/core.css">
     <link rel="stylesheet" type="text/css" href="themes/aindex.css">
     <link rel="stylesheet" type="text/css" href="themes/jquery.toast.min.css">
+    <link rel="stylesheet" type="text/css" href="themes/empty.css" data-id="themestyle">
 </head>
 
 <body onload="initView();">
@@ -37,11 +38,14 @@
 <div class="a-selector-index a-selector-common">
 </div>
 
-<!-- album view -->
+<!-- content selection view -->
 <div class="view album-view">
     <div class="album-container"></div>
+</div>
+<div class="view radio-view">
     <div class="radio-container"></div>
 </div>
+
 <!-- track view -->
 <div class="view track-view">
     <div class="track-container"></div>
@@ -57,10 +61,10 @@
 </div>
 
 <div class="a-selector a-selector-common a-selector-right">
-    <div onclick="notYetImplemented();">
+    <div onclick="goToView('.album-view');">
         <span class="a-selector-icon">&#xF067;</span>
     </div>
-    <div onclick="notYetImplemented();">
+    <div onclick="goToView('.radio-view');">
         <span class="a-selector-icon">&#xF43B;</span>
     </div>
     <div onclick="notYetImplemented();">
