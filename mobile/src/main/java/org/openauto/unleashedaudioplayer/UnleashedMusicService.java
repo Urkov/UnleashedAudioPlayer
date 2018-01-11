@@ -63,7 +63,7 @@ public class UnleashedMusicService extends MediaBrowserServiceCompat {
         @Override
         public void onPlay() {
             try{
-                ActivityAccessHelper.getInstance().activity.webViewHandler.playPause();
+                ActivityAccessHelper.getInstance().activity.webViewHandler.playEvent();
             } catch(Exception e){
                 Log.i(this.getClass().getSimpleName(), e.getMessage());
             }
@@ -75,6 +75,11 @@ public class UnleashedMusicService extends MediaBrowserServiceCompat {
 
         @Override
         public void onSeekTo(long position) {
+            try{
+                ActivityAccessHelper.getInstance().activity.webViewHandler.seekEvent(position);
+            } catch(Exception e){
+                Log.i(this.getClass().getSimpleName(), e.getMessage());
+            }
         }
 
         @Override
@@ -84,7 +89,7 @@ public class UnleashedMusicService extends MediaBrowserServiceCompat {
         @Override
         public void onPause() {
             try{
-                ActivityAccessHelper.getInstance().activity.webViewHandler.playPause();
+                ActivityAccessHelper.getInstance().activity.webViewHandler.pauseEvent();
             } catch(Exception e){
                 Log.i(this.getClass().getSimpleName(), e.getMessage());
             }
@@ -93,7 +98,7 @@ public class UnleashedMusicService extends MediaBrowserServiceCompat {
         @Override
         public void onStop() {
             try{
-                ActivityAccessHelper.getInstance().activity.webViewHandler.playPause();
+                ActivityAccessHelper.getInstance().activity.webViewHandler.stopEvent();
             } catch(Exception e){
                 Log.i(this.getClass().getSimpleName(), e.getMessage());
             }
@@ -119,6 +124,11 @@ public class UnleashedMusicService extends MediaBrowserServiceCompat {
 
         @Override
         public void onCustomAction(String action, Bundle extras) {
+            try{
+                ActivityAccessHelper.getInstance().activity.webViewHandler.customEvent(action);
+            } catch(Exception e){
+                Log.i(this.getClass().getSimpleName(), e.getMessage());
+            }
         }
 
         @Override

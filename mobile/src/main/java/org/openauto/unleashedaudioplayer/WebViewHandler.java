@@ -59,8 +59,20 @@ public class WebViewHandler {
     public void prevTrack(){
         webview.post(() -> webview.loadUrl("javascript:playPrevTrack()"));
     }
-    public void playPause(){
-        webview.post(() -> webview.loadUrl("javascript:playPause()"));
+    public void pauseEvent(){
+        webview.post(() -> webview.loadUrl("javascript:pauseEvent()"));
+    }
+    public void playEvent(){
+        webview.post(() -> webview.loadUrl("javascript:playEvent()"));
+    }
+    public void stopEvent(){
+        webview.post(() -> webview.loadUrl("javascript:stopEvent()"));
+    }
+    public void seekEvent(long position){
+        webview.post(() -> webview.loadUrl("javascript:seekEvent("+position+")"));
+    }
+    public void customEvent(String action){
+        webview.post(() -> webview.loadUrl("javascript:customEvent("+action+")"));
     }
 
     public void loadWebradio(){

@@ -40,6 +40,25 @@ function stopPlaying(){
     playingAudio = false;
 }
 
+function playEvent(){
+    $.toast("playEvent");
+    playPause();
+}
+function stopEvent(){
+    $.toast("stopEvent");
+    playPause();
+}
+function pauseEvent(){
+    $.toast("pauseEvent");
+    playPause();
+}
+function seekEvent(pos){
+    $.toast("seekEvent: " + pos);
+}
+function customEvent(act){
+    $.toast("customEvent: " + act);
+}
+
 function playPause(){
     showToast("playPause");
     if(playingAudio){
