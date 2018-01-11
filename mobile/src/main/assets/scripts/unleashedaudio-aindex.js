@@ -16,7 +16,9 @@ function indexExists(idx) {
 }
 
 function iconActionScroll(amount){
-    window.scrollBy(0,amount);
+    $('html, body').animate({
+        scrollTop: amount
+    }, 100);
 }
 
 function iconActionTop() {
