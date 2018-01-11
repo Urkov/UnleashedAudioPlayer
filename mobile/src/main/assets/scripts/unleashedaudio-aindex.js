@@ -1,3 +1,17 @@
+function goToAlbumId(e) {
+    try {
+        var albumid = $(e).data("albumid");
+        var el = $(".album-item[data-albumid=" + albumid + "]").get(0);
+        if (el !== undefined) {
+            $('html,body').animate({
+                scrollTop: $(el).offset().top
+            }, 0);
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 function goToByScroll(idx, itemClass) {
     try {
         var el = $(itemClass + "[data-index=" + idx + "]").get(0);

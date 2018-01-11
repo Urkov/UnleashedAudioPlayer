@@ -50,7 +50,7 @@
 <div class="view track-view">
     <div class="track-container"></div>
     <div class="cover-container">
-        <img onclick="goToView('.album-view'); $('.a-selector').show();" class="coverart-img" src="">
+        <img onclick="goToView('.album-view'); $('.a-selector').show(); goToAlbumId(this);" class="coverart-img" src="" data-albumid="">
         <br>
         <span class='file-type-box'></span>
         <span class='year-box' style="display: none;"></span>

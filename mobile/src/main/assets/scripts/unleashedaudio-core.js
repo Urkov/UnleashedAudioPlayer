@@ -134,6 +134,7 @@ function createTrackGrid(jsonTracks){
     var coverArt = "";
     var fileExt = "";
     var year = "";
+    var albumid = "";
     $(".track-container").empty();
     $.each(trackObjects, function(i,e){
         $(".track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
@@ -143,6 +144,7 @@ function createTrackGrid(jsonTracks){
         }
         fileExt = e.fileExt;
         year = e.year;
+        albumid = e.albumId;
     });
     $(".file-type-box").text(fileExt);
     $(".year-box").text(year);
@@ -152,9 +154,11 @@ function createTrackGrid(jsonTracks){
         $(".year-box").show();
     }
     $(".coverart-img")[0].src = coverArt;
+    $($(".coverart-img")[0]).data("albumid", albumid);
 
     goToView(".track-view");
     hideAlphaIndex();
+    window.scrollTo(0, 0);
 
 }
 
@@ -174,7 +178,7 @@ function createAlbumGrid(jsonAlbums){
         }
         var coverHTML = "<div><img class='album-img' src='"+albumArtFile+"'></img></div>";
         var indexLetter = e.artist.charAt(0).toUpperCase();
-        $(".album-container").append("<div onClick=\"loadTracks('"+e.id+"');\" class='album-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".album-container").append("<div onClick=\"loadTracks('"+e.id+"');\" class='album-item' data-index='"+indexLetter+"' data-albumid='"+e.id+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
     goToView(".album-view");

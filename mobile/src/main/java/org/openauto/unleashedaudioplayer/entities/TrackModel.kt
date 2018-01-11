@@ -14,6 +14,7 @@ class TrackModel : Comparable<TrackModel> {
         }
     }
 
+    var albumId: Long = 0
     var id: Long = 0
     var track: String? = null
     var title: String? = null
