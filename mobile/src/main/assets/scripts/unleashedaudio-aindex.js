@@ -43,7 +43,6 @@ function initAlphaIndex(itemClass){
     $(".a-selector-index").empty();
     //initialize
     $(itemClass).each(function(i, e) {
-        console.log(e);
         var idx = $(e).data("index");
         if (!indexExists(idx)) {
             $(".a-selector-index").append("<div data-index='" + idx + "'><span>" + idx + "</span></div>");
