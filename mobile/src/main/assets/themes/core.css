@@ -14,7 +14,7 @@
     font-family: 'Material Design Icons';
     font-style: normal;
     font-weight: 400;
-    src: url("file:///android_asset/fonts/materialdesignicons.ttf") format('truetype');
+    src: url("file:///android_asset/fonts/materialdesignicons-webfont.ttf") format('truetype');
 }
 
 * {

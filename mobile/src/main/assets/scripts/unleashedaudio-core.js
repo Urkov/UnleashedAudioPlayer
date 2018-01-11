@@ -11,6 +11,10 @@ function b64DecodeUnicode(str) {
     }).join(''))
 }
 
+function notYetImplemented(){
+    $.toast("Not yet implemented :(");
+}
+
 function goToView(view){
     $(".view").hide();
     $(view).show();

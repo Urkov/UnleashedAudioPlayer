@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+.a-selector-right {
+    right: 5px;
+    top: 0;
+}
+
 .a-selector {
     display: flex;
     justify-content: center;
