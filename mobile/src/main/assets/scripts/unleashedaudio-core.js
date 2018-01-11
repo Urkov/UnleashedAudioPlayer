@@ -85,21 +85,30 @@ function playTrack(element){
 
 
 function playPauseWebradio(element){
-    if($(element).data("playing")){
+
+    //is the current item playing?
+    var currentPlaying = $(element).data("playing");
+
+    //The currently playing item was clicked -> webradio should stop
+    if(currentPlaying){
         //force an empty source to stop using bandwidth
         $(".audio-player").children()[0].src = "";
         $(".audio-player")[0].load();
         $(".audio-player")[0].play();
         $(element).data("playing", false);
         playingAudio = false;
-    } else {
-        var stream = $(element).data("stream");
-        $(".audio-player").children()[0].src = stream;
-        $(".audio-player")[0].load();
-        $(".audio-player")[0].play();
-        $(element).data("playing", true);
-        playingAudio = true;
+        return;
     }
+
+    //A different item has been clicked
+    $(".radio-item").data("playing", false);
+    var stream = $(element).data("stream");
+    $(".audio-player").children()[0].src = stream;
+    $(".audio-player")[0].load();
+    $(".audio-player")[0].play();
+    $(element).data("playing", true);
+    playingAudio = true;
+
 }
 
 function createRadioGrid(webRadio){
@@ -115,7 +124,7 @@ function createRadioGrid(webRadio){
         }
         var coverHTML = "<div><img class='album-img' src='"+e.cover+"'></img></div>"
         var indexLetter = e.title.charAt(0).toUpperCase();
-        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
+        $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='album-item radio-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
 
 }
