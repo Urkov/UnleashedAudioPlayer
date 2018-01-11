@@ -104,8 +104,18 @@ public class MediaStoreHandler {
 
                 AlbumModel albumData = new AlbumModel();
                 albumData.setId(cursor.getLong(cursor.getColumnIndex(_id)));
-                albumData.setName(cursor.getString(cursor.getColumnIndex(album_name)));
-                albumData.setArtist(cursor.getString(cursor.getColumnIndex(artist)));
+
+                String nameStr = cursor.getString(cursor.getColumnIndex(album_name));
+                String artistStr = cursor.getString(cursor.getColumnIndex(artist));
+                //This is for creating a simple index letter for unknown artists and albums
+                if(nameStr.startsWith("<unknown")){
+                    nameStr = "⁇";
+                }
+                if(artistStr.startsWith("<unknown")){
+                    artistStr = "⁇";
+                }
+                albumData.setName(nameStr);
+                albumData.setArtist(artistStr);
                 albumData.setArt(cursor.getString(cursor.getColumnIndex(albumart)));
                 albumData.setTracks(cursor.getString(cursor.getColumnIndex(tracks)));
                 list.add(albumData);
