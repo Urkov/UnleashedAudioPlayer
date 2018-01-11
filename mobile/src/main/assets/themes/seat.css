@@ -7,3 +7,8 @@
 .file-type-box, .year-box {
     border: 1px solid #F20017 !important;
 }
+
+.a-selector span,
+.a-selector-index div {
+    background: #F20017 !important;
+}

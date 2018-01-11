@@ -183,6 +183,14 @@ function initAudioPlayer(){
 
 }
 
+function cycleTheme(){
+    var link = document.createElement("link");
+    link.href = "themes/seat.css";
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    document.getElementsByTagName("head")[0].appendChild(link);
+}
+
 function initView(){
     showToast("initView");
     loadAlbums();
