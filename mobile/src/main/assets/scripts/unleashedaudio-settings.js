@@ -1,6 +1,6 @@
 var settings = {};
 settings.theme = 'default';
-var themes = ['default', 'red1', 'green1', 'black1'];
+var themes = ['default', 'red1', 'green1', 'blue1', 'black1'];
 
 function applyTheme(){
     $("#dynamic-stylesheet").attr("href", "css/themes/" + settings.theme + ".css");
