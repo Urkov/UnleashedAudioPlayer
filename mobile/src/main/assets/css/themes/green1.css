@@ -1,0 +1,18 @@
+.album-item, .radio-item {
+    border: 1px solid #4BA82E !important;
+}
+.track-item {
+    border: 1px solid #4BA82E !important;
+}
+.file-type-box, .year-box {
+    border: 1px solid #4BA82E !important;
+}
+
+.a-selector span,
+.a-selector-index div {
+    background: #4BA82E !important;
+}
+
+.coverart-img {
+    border: 1px solid #4BA82E !important;
+}
