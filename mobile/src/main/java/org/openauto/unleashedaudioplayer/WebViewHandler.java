@@ -39,6 +39,8 @@ public class WebViewHandler {
         wbset.setAllowContentAccess(true);
         wbset.setAllowFileAccess(true);
         wbset.setAllowFileAccessFromFileURLs(true);
+        wbset.setDomStorageEnabled(true);
+        wbset.setDatabaseEnabled(true);
         webview.setScrollbarFadingEnabled(false);
         webview.setWebChromeClient(new WebChromeClient());
         webview.setWebViewClient(new WebViewClient());

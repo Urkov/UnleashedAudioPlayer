@@ -41,22 +41,22 @@ function stopPlaying(){
 }
 
 function playEvent(){
-    $.toast("playEvent");
+    //$.toast("playEvent");
     playPause();
 }
 function stopEvent(){
-    $.toast("stopEvent");
+    //$.toast("stopEvent");
     playPause();
 }
 function pauseEvent(){
-    $.toast("pauseEvent");
+    //$.toast("pauseEvent");
     playPause();
 }
 function seekEvent(pos){
-    $.toast("seekEvent: " + pos);
+    //$.toast("seekEvent: " + pos);
 }
 function customEvent(act){
-    $.toast("customEvent: " + act);
+    //$.toast("customEvent: " + act);
 }
 
 function playPause(){
@@ -215,18 +215,12 @@ function initAudioPlayer(){
 
 }
 
-function cycleTheme(){
-    var currentTheme = $("link[data-id='themestyle'").attr("href");
-    if(currentTheme === 'themes/empty.css'){
-        $("link[data-id='themestyle'").attr("href", "themes/seat.css");
-    } else {
-        $("link[data-id='themestyle'").attr("href", "themes/empty.css");
-    }
-}
 
 function initView(){
     showToast("initView");
     loadAlbums();
     loadWebradio();
     initAudioPlayer();
+    restoreSettings();
+    applyTheme();
 }
