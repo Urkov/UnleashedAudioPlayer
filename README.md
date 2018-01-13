@@ -11,9 +11,13 @@ I am not responsible for any damage caused by this application.
 ![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua3.png)
 ![alt text](https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/images/ua4.png)
 
-## Dependencies:
+## Credits and other software used to build this:
 
 - https://github.com/martoreto/aauto-sdk (The piece of code which made OEM apps for AA possible in the first place - Good Job!)
+- jQuery https://jquery.com/
+- jQuery Toast https://github.com/kamranahmedse/jquery-toast-plugin
+- Google Fonts https://fonts.google.com/
+- Material Design Icons https://materialdesignicons.com/
 
 ## Features:
 
@@ -23,6 +27,7 @@ I am not responsible for any damage caused by this application.
 
 ## How to install:
 
+- Use Android Studio to develop: https://developer.android.com/studio/index.html
 - Build and install APK (If you want to skip the build, [download APK here](https://github.com/nerone-github/UnleashedAudioPlayer/raw/master/apk/unleashedaudio.apk)).
 - Enable Developer settings in Android Auto
     ![alt text](https://raw.githubusercontent.com/nerone-github/LocalSpeedcam/master/images/devsettings.png)
