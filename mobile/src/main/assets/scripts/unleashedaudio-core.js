@@ -223,4 +223,8 @@ function initView(){
     initAudioPlayer();
     restoreSettings();
     applyTheme();
+    setTimeout(function(){
+        $("body").css("visibility", "visible");
+    },150);
+
 }
