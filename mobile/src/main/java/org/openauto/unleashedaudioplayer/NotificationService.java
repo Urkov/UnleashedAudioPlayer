@@ -32,11 +32,11 @@ public class NotificationService {
 
     public void showAudioNotification(TrackModel tm) {
         Bitmap bitmap = BitmapFactory.decodeFile(tm.getCoverArt());
-
-        showNotification(tm.getArtist(), tm.getTitle(), bitmap);
+        showNotification(tm.getArtist() + " - " + tm.getAlbum(), tm.getTitle(), bitmap);
     }
 
     public void showNotification(String firstLine, String secondLine, Bitmap bitmap) {
+
         mHandler.postDelayed(() -> {
             Notification notification = new NotificationCompat.Builder(activity,
                     NOTIFICATION_CHANNEL_ID)

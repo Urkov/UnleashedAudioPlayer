@@ -60,6 +60,7 @@ public class MediaStoreHandler {
                     TrackModel tm = new TrackModel();
                     tm.setTrack(thisTrack);
                     tm.setAlbumId(thisalbumId);
+                    tm.setAlbum(albumToLoad.getName());
                     tm.setId(thisId);
                     tm.setTitle(thisTitle);
                     tm.setArtist(thisArtist);
