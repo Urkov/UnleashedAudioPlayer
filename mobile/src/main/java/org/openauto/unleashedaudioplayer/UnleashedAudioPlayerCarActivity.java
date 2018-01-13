@@ -16,6 +16,7 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
     private static final String CURRENT_FRAGMENT_KEY = "app_current_fragment";
     private String mCurrentFragmentTag;
     public NotificationService notificationService;
+    public boolean activityIsPaused;
 
     @Override
     public void onDestroy() {
@@ -79,8 +80,15 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
     @Override
     public void onStart() {
+        this.activityIsPaused = false;
         super.onStart();
         switchToFragment(mCurrentFragmentTag);
+    }
+
+    @Override
+    public void onPause() {
+        this.activityIsPaused = true;
+        super.onPause();
     }
 
     public void switchToFragment(String tag) {

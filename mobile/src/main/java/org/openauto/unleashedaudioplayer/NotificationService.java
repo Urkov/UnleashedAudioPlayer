@@ -41,8 +41,11 @@ public class NotificationService {
     }
 
     public void showAudioNotification(TrackModel tm) {
-        Bitmap bitmap = BitmapFactory.decodeFile(tm.getCoverArt());
-        showNotification(tm.getArtist() + " - " + tm.getAlbum(), tm.getTitle(), bitmap);
+        //the activity should only be sent when it is currently paused (e.g. in Maps view)
+        if(activity.activityIsPaused){
+            Bitmap bitmap = BitmapFactory.decodeFile(tm.getCoverArt());
+            showNotification(tm.getArtist() + " - " + tm.getAlbum(), tm.getTitle(), bitmap);
+        }
     }
 
     public void showNotification(String firstLine, String secondLine, Bitmap bitmap) {
