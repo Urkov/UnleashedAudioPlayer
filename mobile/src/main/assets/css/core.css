@@ -34,10 +34,10 @@ body {
 .album-img {
     display: block;
     height: auto;
-    width: 150px;
+    width: 100%;
 }
 .album-item, .radio-item {
-    width: 150px;
+    width: 19%;
     margin: 5px;
     display: inline-block;
     border: 1px solid gray;
