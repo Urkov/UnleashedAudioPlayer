@@ -99,6 +99,8 @@ function playTrack(element){
     $(".audio-player")[0].load();
     $(".audio-player")[0].play();
     playingAudio = true;
+    //show notification
+    Android.showPlayNotification($(element).data("id"));
 
 }
 
@@ -156,7 +158,7 @@ function createTrackGrid(jsonTracks){
     var albumid = "";
     $(".track-container").empty();
     $.each(trackObjects, function(i,e){
-        $(".track-container").append("<div onClick='playTrack(this);' class='track-item' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
+        $(".track-container").append("<div onClick='playTrack(this);' class='track-item' data-id='"+e.id+"' data-file='"+b64EncodeUnicode(e.data)+"'><div><span class='track-item-title'>"+e.title+"</span></div></div>");
         coverArt = e.coverArt;
         if(coverArt === undefined){
             coverArt = "img/nocover.png";

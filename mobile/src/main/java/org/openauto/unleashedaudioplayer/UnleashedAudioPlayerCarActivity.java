@@ -15,6 +15,7 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
     public WebViewHandler webViewHandler;
     private static final String CURRENT_FRAGMENT_KEY = "app_current_fragment";
     private String mCurrentFragmentTag;
+    public NotificationService notificationService;
 
     @Override
     public void onDestroy() {
@@ -30,6 +31,8 @@ public class UnleashedAudioPlayerCarActivity extends CarActivity {
 
         //set the activity for shared access from music service
         ActivityAccessHelper.getInstance().activity = this;
+
+        this.notificationService = new NotificationService(this);
 
         setTheme(R.style.AppTheme_Car);
         super.onCreate(bundle);

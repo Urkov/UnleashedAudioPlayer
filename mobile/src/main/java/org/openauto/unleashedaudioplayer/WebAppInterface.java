@@ -3,12 +3,34 @@ package org.openauto.unleashedaudioplayer;
 import android.content.Context;
 import android.webkit.JavascriptInterface;
 
+import org.openauto.unleashedaudioplayer.entities.TrackModel;
+
 public class WebAppInterface {
 
     private Context context;
 
     WebAppInterface(Context context) {
         this.context = context;
+    }
+
+    @JavascriptInterface
+    public void showPlayNotification(String str) {
+
+        if (context instanceof UnleashedAudioPlayerPhoneActivity){
+            //NYI
+        }
+        if (context instanceof UnleashedAudioPlayerCarActivity){
+            TrackModel playedTrack = null;
+            for(TrackModel m : ((UnleashedAudioPlayerCarActivity)context).webViewHandler.tracks){
+                if(m.getId() == Integer.parseInt(str)){
+                    playedTrack = m;
+                }
+            }
+            if(playedTrack != null){
+                ((UnleashedAudioPlayerCarActivity)context).notificationService.showAudioNotification(playedTrack);
+            }
+        }
+
     }
 
     @JavascriptInterface

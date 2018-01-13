@@ -20,8 +20,9 @@ import java.util.List;
 @SuppressWarnings("WeakerAccess")
 public class WebViewHandler {
 
-    private ArrayList<AlbumModel> albums;
-    private ArrayList<WebradioModel> webradio;
+    public List<AlbumModel> albums;
+    public List<TrackModel> tracks;
+    public List<WebradioModel> webradio;
 
     private WebView webview;
     private Context context;
@@ -97,6 +98,7 @@ public class WebViewHandler {
             }
         }
         List<TrackModel> songs = MediaStoreHandler.getTracksForAlbum(context, albumToLoad);
+        this.tracks = songs;
         Gson g = new Gson();
         webview.post(() -> webview.loadUrl("javascript:createTrackGrid(\"" +  StringEscapeUtils.escapeEcmaScript(g.toJson(songs)) + "\")"));
     }
