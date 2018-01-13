@@ -2,6 +2,7 @@ package org.openauto.unleashedaudioplayer;
 
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,14 +17,23 @@ import org.openauto.unleashedaudioplayer.entities.TrackModel;
 
 public class NotificationService {
 
-    private static final String NOTIFICATION_CHANNEL_ID = "car";
-    private static final int TEST_NOTIFICATION_ID = 1;
-
     public UnleashedAudioPlayerCarActivity activity;
     private Handler mHandler = new Handler();
 
     public NotificationService(UnleashedAudioPlayerCarActivity activity){
         this.activity = activity;
+
+        //create channel for oreo
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel("UNLEASHED_AUDIO_NOTIFICATION_CHANNEL",
+                    "UNLEASHED_AUDIO_NOTIFICATION_CHANNEL",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mChannel.setDescription("UnleashedAudioPlayer notification for Android Auto");
+            NotificationManager mNotificationManager =
+                    (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+            assert mNotificationManager != null;
+            mNotificationManager.createNotificationChannel(mChannel);
+        }
     }
 
     public void showCarToast(String message, int length) {
@@ -39,7 +49,7 @@ public class NotificationService {
 
         mHandler.postDelayed(() -> {
             Notification notification = new NotificationCompat.Builder(activity,
-                    NOTIFICATION_CHANNEL_ID)
+                    "UNLEASHED_AUDIO_NOTIFICATION_CHANNEL")
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentTitle(firstLine)
                     .setContentText(secondLine)
@@ -56,7 +66,7 @@ public class NotificationService {
             NotificationManager notificationManager =
                     (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
             assert notificationManager != null;
-            notificationManager.notify("activity", TEST_NOTIFICATION_ID, notification);
+            notificationManager.notify("activity", 1, notification);
 
             //Use this for a sound
             //CarNotificationSoundPlayer soundPlayer = new CarNotificationSoundPlayer(
