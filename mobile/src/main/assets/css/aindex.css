@@ -51,13 +51,16 @@
 
 .a-selector-index {
     display: none;
-    margin-left: 100px;
-    max-width: 100%;
+    max-width: 72%;
     word-wrap: break-word;
-    width: 70%;
     text-align: left;
     line-height: 250%;
     background: rgba(26, 24, 24, 0.7);
     border-radius: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
