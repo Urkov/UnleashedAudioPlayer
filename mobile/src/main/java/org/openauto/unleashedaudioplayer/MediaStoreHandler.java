@@ -134,8 +134,7 @@ public class MediaStoreHandler {
 
     public static ArrayList<WebradioModel> getWebradioList(Context context) {
 
-        ArrayList<WebradioModel> list = null;
-
+        ArrayList<WebradioModel> list = new ArrayList<>();
         //Try to read webradio information
         try {
             final File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "Radio/radio.txt");
@@ -157,12 +156,8 @@ public class MediaStoreHandler {
             //You'll need to add proper error handling here
         }
 
-        if(list != null){
-            Collections.sort(list);
-            return list;
-        } else {
-            return new ArrayList<>();
-        }
+        Collections.sort(list);
+        return list;
 
     }
 

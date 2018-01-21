@@ -142,8 +142,7 @@ function playPauseWebradio(element){
 
 }
 
-function createRadioGrid(webRadio){
-    var webRadioObjects = JSON.parse(webRadio);
+function createRadioHTML(webRadioObjects){
     showToast("Radio items: " + webRadioObjects.length);
     $(".radio-container").empty();
     $.each(webRadioObjects, function(i,e){
@@ -157,7 +156,19 @@ function createRadioGrid(webRadio){
         var indexLetter = e.title.charAt(0).toUpperCase();
         $(".radio-container").append("<div onClick='playPauseWebradio(this);' data-playing='false' data-stream='" + e.stream + "' class='radio-item' data-index='"+indexLetter+"'>"+artistHTML+albumHTML+coverHTML+"</div>");
     });
+}
 
+function createRadioGrid(webRadio){
+    var webRadioObjects = JSON.parse(webRadio);
+    if(webRadioObjects.length === 0){
+        //no radio items found, load default demo file
+        $.getJSON('https://raw.githubusercontent.com/nerone-github/UnleashedAudioPlayer/master/radio/radio.txt', function(defaultWebRadioObjects) {
+            createRadioHTML(defaultWebRadioObjects);
+        });
+    } else {
+        //load local webradio file
+        createRadioHTML(webRadioObjects);
+    }
 }
 
 function createTrackGrid(jsonTracks){
