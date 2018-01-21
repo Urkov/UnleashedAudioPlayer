@@ -1,4 +1,5 @@
 var playingAudio = false;
+var currentTrackBase64 = null;
 
 function b64EncodeUnicode(str) {
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
@@ -70,6 +71,15 @@ function playPause(){
     }
 }
 
+function markPlayingTrack(){
+    $(".track-item").removeClass("track-item-selected");
+    $(".track-item").each(function(i,e){
+        if(currentTrackBase64 === $(e).data("file")){
+            $(e).addClass("track-item-selected");
+        }
+    });
+}
+
 function playPrevTrack(){
     showToast("playPrevTrack");
     var prevTrack = $(".track-item-selected").prev();
@@ -91,8 +101,6 @@ function playNextTrack(){
 }
 function playTrack(element){
     showToast("playTrack");
-    $(".track-item").removeClass("track-item-selected");
-    $(element).addClass("track-item-selected");
     var file = $(element).data("file");
     console.log(b64DecodeUnicode(file));
     $(".audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
@@ -101,7 +109,9 @@ function playTrack(element){
     playingAudio = true;
     //show notification
     Android.showPlayNotification($(element).data("id"));
-
+    //set current track and mark it
+    currentTrackBase64 = file;
+    markPlayingTrack();
 }
 
 
@@ -180,7 +190,8 @@ function createTrackGrid(jsonTracks){
     goToView(".track-view");
     hideAlphaIndex();
     window.scrollTo(0, 0);
-
+    //check if a file of this album is being played
+    markPlayingTrack();
 }
 
 function loadTracks(id) {
