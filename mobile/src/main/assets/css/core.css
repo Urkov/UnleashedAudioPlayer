@@ -40,7 +40,7 @@ body {
     width: 19%;
     margin: 5px;
     display: inline-block;
-    border: 1px solid gray;
+    border: 1px solid var(--iconcol);
 }
 .artist-text-item {
      white-space: nowrap;
@@ -76,13 +76,13 @@ body {
 .coverart-img {
     width: 80%;
     height: 80%;
-    border: 1px solid gray;
+    border: 1px solid var(--iconcol);
 }
 .track-item {
     font-size: 110%;
     margin: 5px;
     padding: 5px;
-    border: 1px solid gray;
+    border: 1px solid var(--iconcol);
     display: block;
     overflow: hidden;
 }
@@ -99,7 +99,7 @@ body {
     display: none;
     background: black;
     color: white;
-    border: 1px solid gray;
+    border: 1px solid var(--iconcol);
     border-radius: 3px;
     vertical-align: middle;
     position: relative;

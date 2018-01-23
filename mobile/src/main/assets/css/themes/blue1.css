@@ -4,21 +4,7 @@
     --textcol: white;
 }
 
-.album-item, .radio-item {
-    border: 1px solid #194590 !important;
-}
-.track-item {
-    border: 1px solid #194590 !important;
-}
-.file-type-box, .year-box {
-    border: 1px solid #194590 !important;
-}
-
 .a-selector span,
 .a-selector-index div {
     background: #194590 !important;
-}
-
-.coverart-img {
-    border: 1px solid #194590 !important;
 }
