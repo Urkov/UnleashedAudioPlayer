@@ -5,7 +5,7 @@
 }
 
 .audioControlPrevTrackIcon, .audioControlNextTrackIcon {
-    display: none;
+    display: none !important;
 }
 
 .audioControlIcon {
