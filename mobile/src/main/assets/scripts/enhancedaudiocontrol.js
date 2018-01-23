@@ -83,10 +83,10 @@
        $.toast(this.infotext);
    };
    EnhancedAudioControl.prototype.eacPrevTrack = function() {
-       $.toast("Not yet implemented :(");
+       playPrevTrack();
    };
    EnhancedAudioControl.prototype.eacNextTrack = function() {
-       $.toast("Not yet implemented :(");
+       playNextTrack();
    };
    EnhancedAudioControl.prototype.eacStop = function(uiElm) {
        this.htmlAudioElement.currentTime = 0;

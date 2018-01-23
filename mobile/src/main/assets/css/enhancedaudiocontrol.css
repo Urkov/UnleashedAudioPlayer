@@ -4,6 +4,10 @@
     color: var(--textcol);
 }
 
+.audioControlPrevTrackIcon, .audioControlNextTrackIcon {
+    display: none;
+}
+
 .audioControlIcon {
     font-size: 110%;
     color: var(--textcol);
