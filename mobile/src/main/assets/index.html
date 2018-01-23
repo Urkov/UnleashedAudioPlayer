@@ -9,11 +9,12 @@
     <script src="scripts/unleashedaudio-core.js" type="text/javascript"></script>
     <script src="scripts/unleashedaudio-aindex.js" type="text/javascript"></script>
     <script src="scripts/unleashedaudio-settings.js" type="text/javascript"></script>
-
+    <script src="scripts/enhancedaudiocontrol.js" type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="css/core.css">
     <link rel="stylesheet" type="text/css" href="css/aindex.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.toast.min.css">
+    <link rel="stylesheet" type="text/css" href="css/enhancedaudiocontrol.css">
     <link id="dynamic-stylesheet" rel="stylesheet" type="text/css" href="">
 </head>
 
@@ -60,6 +61,23 @@
     <audio class="audio-player" controls>
         <source src="">
     </audio>
+    <div class="extendedAudioControls">
+        <div>
+            <input class="audioControlSeek" value="0" type="range" min="0" max="0" step="1">
+        </div>
+        <div style="display: flex;">
+            <span class="audioControlIcon audioControlPlayPauseIcon">&#xF40A;</span>
+            <span class="audioControlIcon audioControlStopIcon">&#xF4DB;</span>
+            <span class="audioControlIcon audioControlInfoIcon">&#xF64E;</span>
+            <span class="audioControlIcon audioControlPrevTrackIcon" style="display: none;">&#xF4AE;</span>
+            <span class="audioControlMeta"></span>
+            <span class="audioControlTime"></span>
+            <span class="audioControlIcon audioControlNextTrackIcon" style="display: none;">&#xF4AD;</span>
+            <span class="audioControlIcon audioControlShuffleIcon">&#xF49D;</span>
+            <span class="audioControlIcon audioControlRepeatIcon">&#xF456;</span>
+            <span class="audioControlIcon audioControlMuteIcon">&#xF57E;</span>
+        </div>
+    </div>
 </div>
 
 <div class="a-selector a-selector-common a-selector-right">
