@@ -3,6 +3,7 @@
        this.htmlAudioElement = htmlAudioElement;
        this.setEventHandlers();
        this.setHTMLAudioEvents();
+       this.infotext = "";
    }
    EnhancedAudioControl.prototype.setEventHandlers = function() {
        var _this = this;
@@ -17,6 +18,9 @@
        });
        $(this.container).find(".audioControlPrevTrackIcon").on("click", function() {
            _this.eacPrevTrack(this);
+       });
+       $(this.container).find(".audioControlInfoIcon").on("click", function() {
+           _this.eacShowInfo(this);
        });
        $(this.container).find(".audioControlNextTrackIcon").on("click", function() {
            _this.eacNextTrack(this);
@@ -73,11 +77,14 @@
            $(uiElm).text('\uF40A');
        }
    };
+   EnhancedAudioControl.prototype.eacShowInfo = function() {
+       $.toast(this.infotext);
+   };
    EnhancedAudioControl.prototype.eacPrevTrack = function() {
-       console.log("NYI");
+       $.toast("Not yet implemented :(");
    };
    EnhancedAudioControl.prototype.eacNextTrack = function() {
-       console.log("NYI");
+       $.toast("Not yet implemented :(");
    };
    EnhancedAudioControl.prototype.eacStop = function(uiElm) {
        this.htmlAudioElement.currentTime = 0;
