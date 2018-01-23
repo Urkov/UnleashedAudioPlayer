@@ -54,11 +54,15 @@
        $(".audioControlSeek").val(current);
        $(".audioControlSeek").attr("max", duration);
        //set time
-       if (isNaN(duration)) {
+       if (isNaN(duration) || duration === Infinity) {
            $(".audioControlTime").text(this.fmtMSS(current));
        } else {
            $(".audioControlTime").text(this.fmtMSS(current) + "/" + this.fmtMSS(duration));
        }
+   };
+   EnhancedAudioControl.prototype.eacPlay = function(uiElm) {
+        this.htmlAudioElement.play();
+        $(".audioControlPlayPauseIcon").text('\uF3E4');
    };
    EnhancedAudioControl.prototype.eacPlayPause = function(uiElm) {
        if (this.htmlAudioElement.paused) {
