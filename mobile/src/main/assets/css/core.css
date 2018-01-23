@@ -96,6 +96,7 @@ body {
     background: white;
 }
 .file-type-box, .year-box {
+    display: none;
     background: black;
     color: white;
     border: 1px solid gray;
@@ -108,15 +109,13 @@ body {
     padding-bottom: 1px;
 }
 .audio-player {
+    display: none;
+}
+.extendedAudioControls {
     width: 50%;
     position: fixed;
     bottom: 0;
     right: 0;
     display: block;
 }
-audio::-webkit-media-controls-panel {
-    background: transparent;
-}
-audio::-webkit-media-controls-current-time-display, audio::-webkit-media-controls-time-remaining-display {
-    color: white;
-}
+

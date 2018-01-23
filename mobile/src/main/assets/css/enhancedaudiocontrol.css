@@ -1,8 +1,3 @@
-:root {
-    --backgroundcol: black;
-    --iconcol: rgb(245, 230, 16);
-    --textcol: white;
-}
 
 .extendedAudioControls {
     background: var(--backgroundcol);
@@ -10,7 +5,8 @@
 }
 
 .audioControlIcon {
-    color: var(--iconcol);
+    font-size: 110%;
+    color: var(--textcol);
     display: inline-block;
     cursor: pointer;
     padding: 8px;

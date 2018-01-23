@@ -1,3 +1,9 @@
+:root {
+    --backgroundcol: black;
+    --iconcol: #4BA82E;
+    --textcol: white;
+}
+
 .album-item, .radio-item {
     border: 1px solid #4BA82E !important;
 }

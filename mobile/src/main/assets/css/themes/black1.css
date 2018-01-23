@@ -1,3 +1,9 @@
+:root {
+    --backgroundcol: black;
+    --iconcol: #F20017;
+    --textcol: white;
+}
+
 .a-selector span,
 .a-selector-index div {
     background: black !important;
