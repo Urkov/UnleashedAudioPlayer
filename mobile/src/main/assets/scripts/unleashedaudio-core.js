@@ -1,4 +1,3 @@
-var playingAudio = false;
 var currentTrackBase64 = null;
 
 function b64EncodeUnicode(str) {
@@ -38,7 +37,6 @@ function stopPlaying(){
     showToast("stopPlaying");
     $(".audio-player")[0].pause();
     this.currentTime = 0;
-    playingAudio = false;
 }
 
 function playEvent(){
@@ -62,12 +60,10 @@ function customEvent(act){
 
 function playPause(){
     showToast("playPause");
-    if(playingAudio){
+    if(!$(".audio-player")[0].paused){
         $(".audio-player")[0].pause();
-        playingAudio = false;
     } else {
         $(".audio-player")[0].play();
-        playingAudio = true;
     }
 }
 
@@ -103,10 +99,8 @@ function playTrack(element){
     showToast("playTrack");
     var file = $(element).data("file");
     console.log(b64DecodeUnicode(file));
-    $(".audio-player").children()[0].src = "file://" + b64DecodeUnicode(file);
-    $(".audio-player")[0].load();
-    $(".audio-player")[0].play();
-    playingAudio = true;
+    enhancedAudioControl.setSource("file://" + b64DecodeUnicode(file));
+    enhancedAudioControl.eacPlay();
     //show notification
     Android.showPlayNotification($(element).data("id"));
     //set current track and mark it
@@ -123,22 +117,18 @@ function playPauseWebradio(element){
     //The currently playing item was clicked -> webradio should stop
     if(currentPlaying){
         //force an empty source to stop using bandwidth
-        $(".audio-player").children()[0].src = "";
-        $(".audio-player")[0].load();
-        $(".audio-player")[0].play();
+        enhancedAudioControl.setSource("");
         $(element).data("playing", false);
-        playingAudio = false;
         return;
     }
 
     //A different item has been clicked
     $(".radio-item").data("playing", false);
     var stream = $(element).data("stream");
-    $(".audio-player").children()[0].src = stream;
-    $(".audio-player")[0].load();
+    enhancedAudioControl.setSource(stream);
     $(".audio-player")[0].play();
     $(element).data("playing", true);
-    playingAudio = true;
+
 
 }
 
@@ -191,10 +181,13 @@ function createTrackGrid(jsonTracks){
     $(".file-type-box").text(fileExt);
     $(".year-box").text(year);
     if(year === undefined){
-        $(".year-box").hide();
+        //$(".year-box").hide();
+        enhancedAudioControl.infotext = fileExt;
     } else {
-        $(".year-box").show();
+        //$(".year-box").show();
+        enhancedAudioControl.infotext = year + " " + fileExt;
     }
+
     $(".coverart-img")[0].src = coverArt;
     $($(".coverart-img")[0]).data("albumid", albumid);
 
@@ -233,11 +226,12 @@ function initAudioPlayer(){
     //bind event to detect when a track has finished playing
     var audioPlayer = $(".audio-player")[0];
     audioPlayer.addEventListener("ended", function(){
-          audioPlayer.currentTime = 0;
-          playNextTrack();
-     });
 
+          playNextTrack();
+    });
+    enhancedAudioControl = new EnhancedAudioControl($(".extendedAudioControls")[0],audioPlayer);
 }
+
 
 
 function initView(){

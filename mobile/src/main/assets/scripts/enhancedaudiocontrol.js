@@ -40,10 +40,12 @@
        this.htmlAudioElement.ontimeupdate = function(d) {
            _this.eacSetSeekPosition();
        };
+       /*
        this.htmlAudioElement.onended = function(d) {
            _this.eacSetSeekPosition();
            _this.eacStop();
        };
+       */
        this.htmlAudioElement.onpause = function(d) {};
        this.htmlAudioElement.onloadeddata = function(d) {
            _this.eacSetSeekPosition();
@@ -93,9 +95,11 @@
    };
    EnhancedAudioControl.prototype.eacShuffleMode = function(uiElm) {
        $(uiElm).text($(uiElm).text() === '\uF49D' ? '\uF49E' : '\uF49D');
+       $.toast("Not yet implemented :(");
    };
    EnhancedAudioControl.prototype.eacRepeatMode = function(uiElm) {
        $(uiElm).text($(uiElm).text() === '\uF456' ? '\uF457' : '\uF456');
+       $.toast("Not yet implemented :(");
    };
    EnhancedAudioControl.prototype.eacMute = function(uiElm) {
        $(uiElm).text($(uiElm).text() === '\uF581' ? '\uF57E' : '\uF581');
@@ -103,6 +107,7 @@
    };
    EnhancedAudioControl.prototype.setSource = function(source) {
        this.htmlAudioElement.src = source;
+       this.htmlAudioElement.load();
    };
    EnhancedAudioControl.prototype.setSourceType = function(sourceType) {
        $(".audioControlMeta").text(sourceType);
