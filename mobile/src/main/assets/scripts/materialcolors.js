@@ -5,6 +5,10 @@ function MaterialColorPicker() {
     $(materialColors.concat(basecolors)).each(function(index, el) {
         $(".pickerContainer").append("<div onclick='mpi.selectCol(this);' data-color='" + el + "' style='background: " + el + "'>&nbsp;</div>");
     });
+    //set from settings
+    $($(".settableColor")[0]).css("background", settings.backgroundcol);
+    $($(".settableColor")[1]).css("background", settings.iconcol);
+    $($(".settableColor")[2]).css("background", settings.textcol);
 }
 MaterialColorPicker.prototype.focusProp = function(el) {
     $(".settableColor").removeClass("settableColorActive");
@@ -12,11 +16,17 @@ MaterialColorPicker.prototype.focusProp = function(el) {
 };
 MaterialColorPicker.prototype.selectCol = function(el) {
     $(".settableColorActive").css("background", $(el).data("color"));
-    $(".settableColorActive").val($(el).data("color"));
+    $(".settableColorActive").data("color", $(el).data("color"));
     this.applySelection();
 };
 MaterialColorPicker.prototype.applySelection = function() {
     $(".settableColor").each(function(i, e) {
-        document.body.style.setProperty($(e).data("property"), $(e).val());
+        document.body.style.setProperty($(e).data("property"), $(e).data("color"));
     });
+};
+MaterialColorPicker.prototype.saveTheme = function() {
+     settings.backgroundcol = $($(".settableColor")[0]).data("color");
+     settings.iconcol = $($(".settableColor")[1]).data("color");
+     settings.textcol = $($(".settableColor")[2]).data("color");
+     saveSettings();
 };

@@ -1,8 +1,15 @@
-
+.exitThemeView {
+    background-color: var(--iconcol);
+    color: var(--textcol);
+    font-family: 'Material Design Icons';
+    margin: 5px;
+    border-radius: 10px;
+    padding: 8px 16px 8px 16px;
+}
 .settableColor {
-    width: 100px;
+    display: inline-block;
+    width: 70px;
     color: transparent;
-    outline: none;
     border: 1px solid white;
 }
 
@@ -11,13 +18,15 @@
 }
 
 .styleableItems {
-    background-color: black;
+    background: black;
     color: white;
     width: 100%;
-    display: inline-block;
+    display: block;
     position: fixed;
     height: 40px;
     top: 0;
+    left: 0;
+    right: 0;
     text-align: center;
     line-height: 230%;
 }

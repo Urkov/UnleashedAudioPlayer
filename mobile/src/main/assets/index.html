@@ -10,11 +10,14 @@
     <script src="scripts/unleashedaudio-aindex.js" type="text/javascript"></script>
     <script src="scripts/unleashedaudio-settings.js" type="text/javascript"></script>
     <script src="scripts/enhancedaudiocontrol.js" type="text/javascript"></script>
+    <script src="scripts/materialcolors.js" type="text/javascript"></script>
+
 
     <link rel="stylesheet" type="text/css" href="css/core.css">
     <link rel="stylesheet" type="text/css" href="css/aindex.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.toast.min.css">
     <link rel="stylesheet" type="text/css" href="css/enhancedaudiocontrol.css">
+    <link rel="stylesheet" type="text/css" href="css/materialcolors.css">
     <link id="dynamic-stylesheet" rel="stylesheet" type="text/css" href="">
 </head>
 
@@ -80,6 +83,21 @@
     </div>
 </div>
 
+<div class="view theme-view">
+    <div class="styleableItems">
+        <span class="exitThemeView" onclick="goToView('.album-view'); $('.a-selector').show(); applyTheme();">&#xF5AD;</span>
+        <span>Background:</span>
+        <div class="settableColor" onclick="mpi.focusProp(this);" data-color="#FFFFFF" data-property="--backgroundcol">&nbsp;</div>
+        <span>Accent:</span>
+        <div class="settableColor" onclick="mpi.focusProp(this);" data-color="#FFFFFF" data-property="--iconcol">&nbsp;</div>
+        <span>Text:</span>
+        <div class="settableColor" onclick="mpi.focusProp(this);" data-color="#FFFFFF" data-property="--textcol">&nbsp;</div>
+        <span class="exitThemeView" onclick="goToView('.album-view'); $('.a-selector').show(); mpi.saveTheme();">&#xF12C;</span>
+    </div>
+    <div class="pickerContainer">
+    </div>
+</div>
+
 <div class="a-selector a-selector-common a-selector-right">
     <div onclick="goToView('.album-view'); initAlphaIndex('.album-item');">
         <span class="a-selector-icon">&#xF067;</span>
@@ -93,7 +111,7 @@
     <div onclick="notYetImplemented();">
         <span class="a-selector-icon">&#xF025;</span>
     </div>
-    <div onclick="nextTheme(); saveSettings(); applyTheme();">
+    <div onclick="goToView('.theme-view'); hideAlphaIndex();">
         <span class="a-selector-icon">&#xF27C;</span>
     </div>
 </div>
