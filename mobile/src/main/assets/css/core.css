@@ -24,8 +24,8 @@
 
 body {
     font-family: 'AlegreyaSans-Regular';
-    background: black;
-    color: white;
+    background: var(--backgroundcol);
+    color: var(--textcol);
     margin-top: 4px;
 }
 .view {
