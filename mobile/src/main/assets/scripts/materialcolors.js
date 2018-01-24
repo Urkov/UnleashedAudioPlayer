@@ -15,9 +15,11 @@ MaterialColorPicker.prototype.focusProp = function(el) {
     $(el).addClass("settableColorActive");
 };
 MaterialColorPicker.prototype.selectCol = function(el) {
-    $(".settableColorActive").css("background", $(el).data("color"));
-    $(".settableColorActive").data("color", $(el).data("color"));
-    this.applySelection();
+    if($(".settableColorActive").length > 0){
+        $(".settableColorActive").css("background", $(el).data("color"));
+        $(".settableColorActive").data("color", $(el).data("color"));
+        this.applySelection();
+    }
 };
 MaterialColorPicker.prototype.applySelection = function() {
     $(".settableColor").each(function(i, e) {
