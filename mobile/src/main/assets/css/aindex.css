@@ -32,8 +32,8 @@
 .a-selector span,
 .a-selector-index div {
     font-family: 'RobotoMono-Regular';
-    background-color: #2196F3;
-    color: white;
+    background-color: var(--iconcol);
+    color: var(--textcol);
 }
 
 .a-selector span {
