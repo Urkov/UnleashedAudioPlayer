@@ -1,26 +1,23 @@
 var settings = {};
-settings.theme = 'default';
-var themes = ['default', 'red1', 'green1', 'blue1', 'black1'];
+settings.backgroundcol = 'black';
+settings.iconcol = '#03a9f4';
+settings.textcol = 'white';
 
 function applyTheme(){
-    $("#dynamic-stylesheet").attr("href", "css/themes/" + settings.theme + ".css");
+    document.body.style.setProperty("--backgroundcol", settings.backgroundcol);
+    document.body.style.setProperty("--iconcol", settings.iconcol);
+    document.body.style.setProperty("--textcol", settings.textcol);
 }
-function nextTheme(){
-    var currentIndex = themes.indexOf(settings.theme);
-    var nextIndex = currentIndex + 1 === themes.length ? 0 : currentIndex + 1;
-    settings.theme = themes[nextIndex];
-    //$.toast("Next theme: " + settings.theme);
 
-}
 function saveSettings(){
     //$.toast("Save settings: " + JSON.stringify(settings));
-    localStorage.setItem("settings", JSON.stringify(settings));
+    localStorage.setItem("csssettings", JSON.stringify(settings));
 }
 function restoreSettings(){
-    var savedSettings = JSON.parse(localStorage.getItem("settings"));
+    var savedSettings = JSON.parse(localStorage.getItem("csssettings"));
     if(savedSettings === null){
         saveSettings();
     }
-    settings = JSON.parse(localStorage.getItem("settings"));
+    settings = JSON.parse(localStorage.getItem("csssettings"));
     //$.toast("Restore settings: " + JSON.stringify(settings));
 }

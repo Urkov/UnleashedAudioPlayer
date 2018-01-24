@@ -240,6 +240,7 @@ function initView(){
     loadWebradio();
     initAudioPlayer();
     restoreSettings();
+    mpi = new MaterialColorPicker();
     applyTheme();
     setTimeout(function(){
         $("body").css("visibility", "visible");
