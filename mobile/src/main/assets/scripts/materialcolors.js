@@ -6,9 +6,13 @@ function MaterialColorPicker() {
         $(".pickerContainer").append("<div onclick='mpi.selectCol(this);' data-color='" + el + "' style='background: " + el + "'>&nbsp;</div>");
     });
     //set from settings
-    $($(".settableColor")[0]).css("background", settings.backgroundcol);
-    $($(".settableColor")[1]).css("background", settings.iconcol);
-    $($(".settableColor")[2]).css("background", settings.textcol);
+    var jqSettable = $(".settableColor");
+    $(jqSettable[0]).css("background", settings.backgroundcol);
+    $(jqSettable[0]).data("color", settings.backgroundcol)
+    $(jqSettable[1]).css("background", settings.iconcol);
+    $(jqSettable[1]).data("color", settings.iconcol)
+    $(jqSettable[2]).css("background", settings.textcol);
+    $(jqSettable[2]).data("color", settings.textcol)
 }
 MaterialColorPicker.prototype.focusProp = function(el) {
     $(".settableColor").removeClass("settableColorActive");
